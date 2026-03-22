@@ -1,0 +1,2 @@
+This was a great creative reference on how I should structure my folder.
+https://github.com/stride3d/stride/tree/master/sources/editor/Stride.Editor.CrashReport
