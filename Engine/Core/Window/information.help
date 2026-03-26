@@ -1,0 +1,3 @@
+Window/window.cpp/.h 
+
+Is one of the greatest way to modulize the engine, calling on window.cpp will allow user to create windows outside the application, allowing for the development of tools
