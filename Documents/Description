@@ -1,5 +1,5 @@
 KingStudio Engine (KSE)
-
+[This information is found on the wiki of this project]
 This wiki documents the full development process, architecture, research, and technical decisions behind the project.
 
 What You Will Find Here
@@ -69,3 +69,756 @@ Game executable
 Assets
 Build output
 Platform-specific deployment
+
+Contrainsts
+
+ConstraintType	|    Key Constraints
+-------------------------------------------------------------------------------------------
+Architectural	|    Layer separation, subsystem boundaries, platform abstraction
+Technical	    |    GC behavior, real‑time rendering, ECS performance, networking security
+Workflow	    |    Editor stability, GitHub branching, documentation accuracy
+Scope	        |    Learning‑focused features, maintainability, avoiding over‑engineering
+External	    |    Library compatibility, licensing, asset pipeline limits
+
+
+
+KSE
+Software Engineering Assignment
+Created by Cal Lucas
+The current version of this document is: 1.4
+Last updated 23/03/2026
+
+
+This document contains all production notes and development records related to KSE. The purpose of this project is to build on previous experience while exploring new techniques and knowledge that will support future growth in game development. 
+Project Focus Areas 
+This documentation covers several key components of the development process, including: 
+Client requirements and theoretical research 
+Security considerations and data protection 
+2D and 3D programming using C# and Python 
+Online features and network interactivity 
+Each of these areas will be explained in detail throughout the document. 
+Note 
+This is not a tutorial. Its purpose is to document the development process, decisions, and technical implementation behind the product. 
+Also note that KSE might have fewer updates after 30/07/2026 due to assessment requirements that will no longer affect the overall outcome pass date.
+
+Table of Contents
+
+
+Table of Contents
+Introduction
+What KSE Is
+What You Can Expect from This Document
+Github/Project information
+Information on how to read it/use it:
+1 – Client Details
+1.1 – Statement of Intent
+1.2 – Purpose of This Document
+1.3 - Project Overview
+1.4 – Aim
+1.5 – Goals
+2 – Research
+2.1 – Inspiration
+2.1.1 - Games
+2.1.2 - Film
+2.1.3 - Software Projects
+2.2 – Hardware
+2.2.1 - Developer PC → KingStudio WorkStation Development Computer
+2.2.2 - School Hardware → Multiple devices
+2.2.3 - All Hardware
+2.3 – Software
+2.4 – Resources
+2.4.1 - Top-Level Engine Architecture
+2.4.2 - Application Layer (Runtime, Assets, Build Output)
+2.4.3 - Editor Layer (Tools, UI, Panels, Inspectors)
+2.4.4 - Engine Layer (Rendering, ECS, Physics, Audio, Platform)
+2.4.5 - Tools
+2.5 – File Types
+2.5.1 - Essential Graphics Languages
+2.5.2 - Supplementary Development Languages
+2.5.3 - Data & Organization Languages
+3 - Development of Ideas
+3.1 - KSE workflow visual/description
+3.1.1 - KSE Engine Workflow
+3.1.2 -Rendering Pipeline Workflow
+4 - Selection and Justification
+5 - Financial Plan
+5.1 - Financial Estimate Plan
+5.2 - Financial Overall Plan
+6 - Timeline Plan
+6.1 - Timeline Estimate Plan
+6.2 - Timeline Overall Plan
+7 - Development and Logging
+7.1 - Task List
+7.3 - Logging
+7.3.1 - Day 1 → 19/03/2026 → Document Started
+7.3.2 - Day 2 → 21/03/2026 → Game Engine Folder Architecture
+7.3.3 - Day 3 → 22/03/2026 → Working on HOW TO
+7.3.4 - Day 4 → 23/03/2026 → Adding MORE Information
+7.3 - Testing
+8 - Conclusion
+8.1 - Overview of what Happened
+8.2 - What was Learned, Improved and Developed
+8.3 - What would change if it was done all over again?
+9 - Definitions & Terminology
+10 - Bibliography
+
+
+Introduction 
+Welcome to the official development documentation for KSE. This project is a full breakdown of how the game is being created, from the first ideas to the final build. The goal is to give a clear look at what the game engine is, how it works, and what you can expect as it evolves. 
+What KSE Is 
+KSE is a 2D/3D game engine that will allow you to create games, such as fast paced video games. Hopefully this allows people to create games without the restriction of commercial expectations to learn everything at once.
+What You Can Expect from This Document 
+Throughout these pages, you’ll find: 
+An overview of the software concept and design 
+Details on how the systems are built 
+Explanations of the coding process 
+Notes on security, data handling, and online features 
+Visuals, prototypes, and development updates 
+Logic Visual maps
+This document is designed to guide you through the creation of the project and show the work behind the final product. It’s not a tutorial — it’s a behind-the-scenes look at how KSE is being developed. 
+
+
+Github/Project information
+
+Here is the github Repository Link:
+https://github.com/2calucas/KSE
+
+Information on how to read it/use it:
+
+Although there is a README.md in the github repository, here is information on how to use/read the project files.
+{Sorry but this section is under maintenance please come back later}
+1 – Client Details 
+
+1.1 – Statement of Intent 
+This document outlines the full development process for KSE, a game project designed to expand my technical skills and deepen my understanding of modern game development workflows. The project builds on previous experience while introducing new challenges in programming, design, and online interactivity. 
+1.2 – Purpose of This Document 
+The goal of this documentation is to record the production process, explain technical decisions, and demonstrate the methods used to bring the project to life. It serves as a development log rather than a tutorial. 
+1.3 - Project Overview 
+KSE is a 2D/3D game engine editor that will allow users to create video games to their liking. This is intended to have safety data, expansion on all knowledge and engage with new information.
+Focus Areas 
+This documentation covers: 
+Client requirements and theoretical research 
+Security and data protection 
+2D and 3D programming using C# 
+Online systems and network interactivity 
+Each section provides detailed insight into the development process. 
+Tools and Technologies 
+The project is intended to be developed using: 
+C# 
+Python and other Software Engineering lesson coding languages.
+Visual Studio 
+GitHub for version control 
+Additional software for asset creation where required 
+Target Audience 
+This document is intended for assessors, future collaborators, and anyone interested in the technical development of Hazard Arena. 
+ 
+1.4 – Aim 
+The aim of KSE intended to make any game such as; fast‑paced, engaging game experience that blends 2D and 3D gameplay with responsive controls, dynamic environments, and online interaction. This project focuses on building a functional game while developing the core systems that bring it to life, including movement, combat, UI, and multiplayer features. 
+1.5 – Goals 
+1. Build a Functional Core Gameplay System 
+Steps: 
+Create player movement in both 2D and 3D spaces 
+Implement basic combat mechanics (attacks, damage, hit detection) 
+Add enemy or opponent behaviour 
+Test and refine controls for smooth, responsive gameplay 
+2. Develop a Polished Work Place Environment 
+Steps: 
+Design the layout of the arena 
+Create or import 2D/3D assets 
+Add lighting, effects, and environmental hazards 
+Optimise the scene for performance 
+3. Implement Online Interactivity 
+Steps: 
+Set up a networking framework (lobbies, connections, player syncing) 
+Sync player movement and actions across clients 
+Add matchmaking or roombased multiplayer 
+Test latency, stability, and player limits 
+4. Ensure Security and Data Protection 
+Steps: 
+Secure player data (usernames, scores, settings) 
+Prevent unauthorised access or manipulation 
+Implement safe data storage and transfer methods 
+Test for vulnerabilities 
+5. Create a Clear and Functional User Interface 
+Steps: 
+Design menus, HUD, and in-game indicators 
+Add health bars, timers, and score displays 
+Ensure UI works across different resolutions 
+Test usability and readability 
+6. Produce HighQuality Visual and Audio Feedback 
+Steps: 
+Add animations for movement, attacks, and effects 
+Implement sound effects and background music 
+Create visual cues for hits, damage, and interactions 
+Polish transitions and feedback loops 
+7. Maintain Strong Documentation Throughout Development 
+Steps: 
+Record decisions, changes, and challenges 
+Include screenshots, diagrams, and code explanations 
+Keep the document updated as the project evolves 
+Reflect on what was learned during development 
+8. Deliver a Playable, Stable Final Build 
+Steps: 
+Fix bugs and performance issues 
+Run playtests and gather feedback 
+Apply final polish to gameplay and visuals 
+Package the game for distribution 
+
+NOTE: This project will not be super smooth at all, and its main purpose is to build on my prior knowledge and gain new knowledge throughout the journey.
+2 – Research 
+ Note: This section is just research and will be voted by pros and cons later in the Selection and Justification section.
+2.1 – Inspiration 
+Hazard Arena will be a simple 3D/2D game that uses data security, accessibility and optimisation of the project and much more.
+2.1.1 - Games
+
+
+IMG
+Title
+Info
+Pro
+Cons
+
+
+Fortnight 
+A famous multiplayer PvP game.
+Unreal Engine, the game engine that made it is a great inspiration on the outcome.
+Overly used
+
+
+
+2.1.2 - Software
+
+
+IMG
+Title
+Info
+Pro
+Cons
+
+
+Unreal Engine
+A widely used, multi platform application that is used to make all sorts of games that look like AAA games.
+Great Inspiration
+
+Industry Standard
+Overly used
+
+Bland production when published
+
+
+Unity Engine
+A widely used, multi platform application that creates games with the style that the user likes.
+Great inspiration
+
+Long aging industry standard
+Strange ownership decision
+
+Unstable platform with cost of publishing
+
+
+Godot Engine
+
+
+
+
+
+
+
+	 
+2.2 – Hardware 
+2.2.1 - Developer PC → KingStudio WorkStation Development Computer 
+
+
+IMG
+Component name
+Info
+Pro
+Cons
+
+
+Ryzen 7 7700X
+AMD Ryzen 7 7700X is an extremely capable CPU with 8 cores, 16 threads at 5.4Ghz speed for high end computers.
+
+
+
+
+
+
+RX 7900 XT 20GB VRAM Gigabyte
+
+
+
+
+
+
+
+
+DDR5 2x32Gb = 64GB RAM
+
+
+
+
+
+
+
+
+Gigabyte Gaming B560 
+
+
+
+
+
+
+
+
+HP 2TB storage
+
+
+
+
+
+
+
+
+ASUS ProArt Case
+
+
+
+
+
+
+
+
+ASUS ProArt CPU cooler
+
+
+
+
+
+
+
+
+800 W Gold Cert verified
+
+
+
+
+
+
+
+
+LG Ultra Wide FHD 160HZ Monitor
+
+
+
+
+
+
+
+
+Logitech Gamer mouse
+
+
+
+
+
+
+
+
+Logitech Gamer Keyboard
+
+
+
+
+
+
+
+
+
+This is a mid-high end computer, capable of nearly any application.
+
+2.2.2 - School Hardware → Multiple devices
+This section will be cut into 4 sections, including:KHC DC  G5 Computer room, KHC DC Library Computer, KHC DC School Computer, & BHC DC Laptop
+IMG
+Component name
+Info
+Pro
+Cons
+
+
+
+2.2.3 - All Hardware
+
+
+IMG
+Component name
+Info
+Pro
+Cons
+
+
+
+2.3 – Software 
+This section will cover what software is used to create the KSE project.
+2.4 – Resources
+Note: that all links will be found in the bibliography. 
+2.4.1 - Top-Level Engine Architecture
+Game Engine Architecture (C++ / Unreal‑style)
+GitHub – nikoladimitroff/Game-Engine-Architecture 
+`https://github.com/nikoladimitroff/Game-Engine-Architecture` 
+University course with clean folder breakdowns, rendering, ECS, platform layers. 
+
+
+Hazel Engine (C++ Engine + Editor)**
+The Cherno – Hazel Engine**  
+[https://github.com/TheCherno/Hazel](https://github.com/TheCherno/Hazel)  
+One of the best examples of a modern C++ engine with an editor, asset pipeline, and runtime separation.
+
+
+Godot Engine (C++ Core, GDScript, Editor)
+Godot GitHub
+`https://github.com/godotengine/godot`  
+Massive, clean separation between Engine, Editor, Modules, Platform, and ThirdParty.
+
+
+
+
+2.4.2 - Application Layer (Runtime, Assets, Build Output)
+
+
+Unity Project Structure Explanation
+Dante’s Lab – Folder Structure of a Video Game Project
+`https://dante-lab.com/folder-structure`  
+Explains Assets/Scenes/Scripts/Editor separation. 
+  
+
+
+Godot Example Projects
+`https://github.com/godotengine/godot-demo-projects`   
+Shows how runtime assets and scripts are organized.
+
+
+2.4.3 - Editor Layer (Tools, UI, Panels, Inspectors)
+
+ImGui Docking + Editor Frameworks
+ImGui Docking Branch
+`https://github.com/ocornut/imgui/tree/docking` 
+Used by many custom editors.
+
+
+Hazel Editor (C++)
+`https://github.com/TheCherno/Hazel/tree/master/Hazel-Editor`
+Great example of panels, viewport, inspector, scene hierarchy.
+
+
+Godot Editor Source
+`https://github.com/godotengine/godot/tree/master/editor` 
+Full editor implementation with tools, inspectors, serialization.
+
+
+
+
+2.4.4 - Engine Layer (Rendering, ECS, Physics, Audio, Platform)
+
+
+Rendering
+bgfx (Cross‑platform renderer) 
+[https://github.com/bkaradzic/bgfx](https://github.com/bkaradzic/bgfx)  
+Backend‑agnostic rendering: Vulkan, DX12, Metal, OpenGL.
+
+
+Ogre3D  
+[https://github.com/OGRECave/ogre](https://github.com/OGRECave/ogre)  
+Large rendering engine with clean folder separation.
+
+
+ECS (Entity Component System)
+EnTT (C++)  
+[https://github.com/skypjack/entt](https://github.com/skypjack/entt)  
+Modern, fast ECS used in many custom engines.
+
+
+flecs (C) 
+  `https://github.com/SanderMertens/flecs`
+  Lightweight, modular ECS.
+
+
+Physics
+PhysX  
+`https://github.com/NVIDIA-Omniverse/PhysX` 
+Box2D
+(https://github.com/erincatto/box2d)  
+
+
+Audio
+miniaudio 
+(https://github.com/mackron/miniaudio)  
+FMOD (not open source but widely used) 
+(https://fmod.com)
+
+
+Platform Layer
+SDL2
+(https://github.com/libsdl-org/SDL)  
+GLFW
+(https://github.com/glfw/glfw)  
+
+
+Scripting (C#, Python, Bindings)
+
+
+C# Integration
+Mono Runtime
+(https://github.com/mono/mono)  
+Godot C# Bindings 
+  `https://github.com/godotengine/godot/tree/master/modules/mono`
+
+
+Python Integration
+Python C API Examples 
+  `https://github.com/python/cpython/tree/main/Modules` 
+pybind11  
+(https://github.com/pybind/pybind11)  
+Best modern way to bind Python to C++.
+
+
+
+
+Third‑Party Folder Examples
+
+
+Assimp (Asset Importing)
+(https://github.com/assimp/assimp)  
+
+
+stb Libraries (Images, Fonts, etc.)
+(https://github.com/nothings/stb) 
+
+
+ImGui (Editor UI)
+(https://github.com/ocornut/imgui)  
+
+
+
+
+
+
+2.4.5 - Tools
+Shader Tools
+glslangValidator  
+  `https://github.com/KhronosGroup/glslang`  
+SPIRV‑Cross 
+  `https://github.com/KhronosGroup/SPIRV-Cross`  
+
+
+Build Systems
+CMake Examples for Game Engines
+  `https://github.com/TheCherno/Hazel/tree/master/Hazel/vendor`
+Premake 
+  `https://github.com/premake/premake-core`  
+
+
+
+
+The Cherno
+(https://www.youtube.com/@TheCherno)  
+Hazel Engine series — best for C++ engine architecture.
+
+
+Game Engine Series – javidx9 (OneLoneCoder)
+(https://www.youtube.com/@javidx9)  
+Rendering, ECS, engine fundamentals.
+
+
+Molly Rocket (Casey Muratori)
+`https://www.youtube.com/@MollyRocket`  
+Low-level engine architecture, memory, performance.
+
+
+Sebastian Lague
+`https://www.youtube.com/@SebastianLague` 
+Systems, rendering, procedural generation.
+
+
+Godot Source Dive – GDQuest
+(https://www.youtube.com/@GDQuest)  
+Editor and engine internals explained.
+
+
+
+
+Books That Match Your Folder Structure
+
+
+Game Engine Architecture – Jason Gregory 
+The bible of engine structure.
+
+
+Game Programming Patterns – Robert Nystrom  
+ECS, components, messaging, resource management.
+
+
+2.5 – File Types 
+
+
+2.5.1 - Essential Graphics Languages
+HLSL (High-Level Shading Language): The standard for DirectX, primarily used for Windows and Xbox development.
+GLSL (OpenGL Shading Language): Essential for cross-platform support (Linux, Android) when using OpenGL or Vulkan. 
+2.5.2 - Supplementary Development Languages
+While the core engine is C#, these languages often fill specific gaps: 
+C++: Frequently used for high-performance modules, physics engines (like PhysX), or writing "wrappers" to help C# interact with low-level system APIs.
+Lua: A common choice for an "embedded" scripting language, allowing you to write game logic without recompiling the entire engine.
+Python: Highly effective for creating "build tools," asset pipelines, or rapid prototyping of engine concepts. 
+2.5.3 - Data & Organization Languages
+JSON / XML: Standard formats for storing game data in a way that is easily readable by both humans and C#.
+SQL: The engine needs to handle large amounts of persistent data (like player accounts or massive inventories), a database language may be necessary. 
+
+3 - Development of Ideas
+
+3.1 - KSE workflow visual/description
+
+3.1.1 - KSE Engine Workflow
+To support the architectural clarity of the KingStudio Engine (KSE), a visual blockout was created to illustrate how the entire system functions across its three core domains: Editor, Engine, and Application. This diagram provides a high-level overview of how data flows from the game creation environment (Editor), through the core systems (Engine), and into the final runtime (Application). Each subsystem—such as rendering, ECS, physics, audio, and platform abstraction—is visually compartmentalized to reflect modularity and scalability. By mapping out these relationships, the blockout reinforces the separation of concerns within the engine, making it easier to plan development, debug systems, and onboard collaborators. It also highlights the integration of third-party libraries and tools, which are essential for performance and cross-platform compatibility. This visual representation serves as both a technical reference and a planning tool, ensuring that the engine’s structure remains coherent as complexity increases.
+
+
+
+
+
+
+3.1.2 -Rendering Pipeline Workflow
+This is probably how I will develop my renderer around:
+
+To clarify how the KingStudio Engine handles real-time rendering, a visual blockout was created to illustrate the full rendering pipeline as a looped process. The diagram begins with camera and scene data, which feeds into frustum culling to eliminate non-visible objects, optimizing performance. From there, render commands are generated and queued, allowing the engine to sort and batch draw calls efficiently. The renderer then processes geometry, lighting, and shadows before applying post-processing effects such as bloom, tone mapping, and anti-aliasing. The final output is sent to the frame buffer, producing the image seen on screen. This looped structure reflects how modern engines maintain consistent frame updates, and it ensures modularity, scalability, and performance across platforms. By breaking the renderer into discrete stages, the system remains flexible for future upgrades such as deferred rendering, GPU instancing, or custom shader pipelines.
+ 
+
+
+
+
+4 - Selection and Justification
+
+5 - Financial Plan
+5.1 - Financial Estimate Plan
+5.2 - Financial Overall Plan
+6 - Timeline Plan
+6.1 - Timeline Estimate Plan
+6.2 - Timeline Overall Plan
+
+7 - Development and Logging
+
+7.1 - Task List
+To-do
+Started
+In-work
+Completed
+
+
+
+
+
+
+
+
+
+7.3 - Logging
+7.3.1 - Day 1 → 19/03/2026 → Document Started
+This is the first Log of the entire Document, this is the set up of the document and overall project.
+All logs will follow the same template:
+{section} - {Day} → {Date} → {Title}
+Overview
+Details
+What to improve or do next
+Conclusion
+And I will try my best to give full detail in the project's development.
+
+7.3.2 - Day 2 → 21/03/2026 → Game Engine Folder Architecture
+Today’s focus was on establishing a scalable, high‑performance folder structure for the Game Engine project. The architecture now cleanly separates the Application, Editor, and Engine layers while also introducing shared systems, third‑party dependencies, and tooling support. The structure is designed to support C++, C#, and Python workflows without creating cross‑contamination between runtime, editor, and core engine code.
+Completed / What Is Done & What Could Be Improved
+Completed
+Designed a full top‑level folder layout:
+Application (runtime + exported builds)
+Editor (creation tools, UI, asset pipeline)
+Engine (renderer, physics, ECS, platform layer)
+Shared, ThirdParty, Tools, Scripts
+Broke each major folder into logical submodules:
+Rendering backends (Vulkan, DX12, Metal, OpenGL)
+ECS, scene systems, animation, audio, networking
+Editor panels, inspectors, serialization, asset importers
+Application‑side assets, builds, configs
+Ensured the structure mirrors industry‑proven patterns (Unreal, Godot, Unity, custom AAA engines)
+Organized scripting bindings for C# and Python in a clean, centralized location
+What Could Be Improved
+The Engine/Platform layer could be expanded with more granular OS‑specific abstractions.
+The Editor/Tools section may eventually need a plugin system folder for modular extensions.
+The Application/Runtime folder might benefit from a clearer separation between gameplay logic and UI frameworks.
+Build system integration (CMake, Premake, or custom) still needs to be mapped to this structure.
+Next Steps
+Define a module dependency graph to prevent circular references between Engine, Editor, and Application.
+Establish naming conventions and namespace rules for C++, C#, and Python code.
+Begin drafting the CMake or build pipeline that aligns with this folder structure.
+Create a minimal “Hello Engine” bootstrap inside /Engine/Core to validate the architecture.
+Set up the Editor launcher and basic windowing under /Editor/UI and /Engine/Platform.
+This structure sets the foundation for a clean, scalable, and professional‑grade game engine. With the architecture now solidified, the next phase is all about wiring systems together and validating the flow between Engine → Editor → Application. The groundwork is strong — now it’s time to bring it to life.
+
+7.3.3 - Day 3 → 22/03/2026 → Working on HOW TO
+Objective:
+Today’s focus was on refining the KingStudio Engine’s documentation, UI design, and rendering architecture.
+Tasks Completed:
+•	 Reviewed and validated the structure of the technical document
+•	Mapped how “Plan My Project” is already embedded across multiple sections
+•	A visual block-out of the full engine architecture
+•	Designed the “Project Manager” window UI for opening and creating projects
+•	Created a renderer loop diagram showing the real-time rendering pipeline
+•	Discussed the benefits of account-based sign-in for security and collaboration
+•	Recommended the best free software for UI, icon, and layout design
+•	Wrote development paragraphs explaining each visual block-out
+Visuals Added:
+•	Engine architecture diagram
+•	Project Manager window UI
+•	Renderer loop pipeline
+Reflection:
+Today’s work brought clarity and polish to the engine’s core systems. The visual block-outs helped solidify how each subsystem interacts, and the UI designs are now aligned with professional standards. The decision to include account sign-in adds a layer of security and future scalability. Overall, the project is evolving into a robust and well-documented ecosystem.
+
+7.3.4 - Day 4 → 23/03/2026 → Adding MORE Information
+Objective:
+Today's focus is to continue on all parts of the documentation such as; research, development of ideas. I also hope to start coding the window pipeline today, as it will also allow me to start on a stronger foundation, this of course will be coded in C# as it is great and stable for the entire project.
+Tasks Completed:
+Updated Github:
+Wiki
+Settings
+Description
+Edited the Folder structure to support DirectX11
+Started on the windows - Which some technical difficulty has arisen from practice as .NET SDK has some errors that need fix
+
+Reflection:
+Overall it was a productive day, next log will have .NET SDK fixed and Vulkan ready to be implemented.
+7.3 - Testing
+How to read testing:
+For simplicity here are instructions on how to read the testing format.
+
+Title, this will tell you overall what the test is about.
+Description
+Code overview
+Performance
+Did it pass? IF yes, description. IF no, description.
+Conclusion
+
+These 6 steps allow for people to skim through without feeling the pressure of actually reading the entire test log.
+
+8 - Conclusion
+
+What happened?
+What did you learn?
+What could be improved?
+What would you change?
+
+
+8.1 - Overview of what Happened
+
+8.2 - What was Learned, Improved and Developed
+
+8.3 - What would change if it was done all over again?
+
+9 - Definitions & Terminology
+
+10 - Bibliography
+This will be read in alphabetical order to keep everything well organized.
