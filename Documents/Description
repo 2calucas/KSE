@@ -1,0 +1,71 @@
+KingStudio Engine (KSE)
+
+This wiki documents the full development process, architecture, research, and technical decisions behind the project.
+
+What You Will Find Here
+Engine architecture breakdown
+Rendering pipeline documentation
+UI and tool design
+Research and references
+Development logs
+Licensing information
+Definitions and terminology
+KSE is a learning-focused project designed to explore modern game engine workflows, rendering systems, and editor tooling.
+
+Introduction
+KSE (KingStudio Engine) is a hybrid 2D/3D game engine project created to expand technical knowledge in software engineering, rendering, and game development.
+
+Project Overview
+KSE is a fast-paced game engine and development environment designed to support 2D and 3D gameplay, online features, and secure data handling.
+
+Focus Areas
+Client requirements and research
+Security and data protection
+2D and 3D programming
+Online systems and networking
+Engine architecture and rendering
+Editor tools and UI design
+Tools & Technologies
+C#
+Python
+Visual Studio
+GitHub
+Additional asset creation tools
+This documentation outlines:
+
+The purpose of the project
+The development workflow
+Technical decisions
+Research and references
+Visual blockouts and diagrams
+This wiki is not a tutorial.
+It is a behind-the-scenes look at how the engine is being built.
+
+
+Engine Architecture
+KSE is structured into three major layers:
+
+1. Editor Layer
+Tools for game creation:
+
+Scene editor
+Asset browser
+Inspector panels
+Scripting tools
+UI panels and docking
+2. Engine Layer
+Core systems:
+
+Renderer
+ECS
+Physics
+Audio
+Platform abstraction
+Third-party libraries
+3. Application Layer
+Runtime components:
+
+Game executable
+Assets
+Build output
+Platform-specific deployment
