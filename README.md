@@ -38,11 +38,22 @@ of the entire codebase, a development log tied to real commit history, and a tim
 4. [`04-Development-Log.md`](Documents/04-Development-Log.md)
 5. [`05-Timesheet.md`](Documents/05-Timesheet.md) (+ [`Timesheet.csv`](Documents/Timesheet.csv))
 
-## Building and running
+## Running it
+
+**[`run_me.exe`](run_me.exe)**, at the repository root, is a self-contained release build — just download
+and double-click it, no .NET or Vulkan SDK installation required (a Vulkan 1.3-capable GPU/driver is still
+needed to actually render; ray tracing is optional and only offered when the GPU/driver support
+`VK_KHR_ray_query` and `VK_KHR_acceleration_structure`). It's built from the same `samples/Sandbox` source
+as the `run_test.exe` development build below, just published as a single win-x64 executable via:
+
+```
+dotnet publish samples/Sandbox/Sandbox.csproj -c Release -p:Platform=x64 -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+```
+
+## Building from source
 
 Open `Engine.slnx` or run `dotnet build samples/Sandbox/Sandbox.csproj`, then run the resulting
-`run_test.exe`. A Vulkan 1.3-capable GPU is required; ray tracing is optional and only offered when the
-GPU/driver support `VK_KHR_ray_query` and `VK_KHR_acceleration_structure`.
+`run_test.exe` from `samples/Sandbox/bin/x64/Debug/net10.0-windows/`.
 
 ## License
 
