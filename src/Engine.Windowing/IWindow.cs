@@ -17,6 +17,10 @@ public interface IWindow : IDisposable
     /// <summary>Raised on key-down, with the platform virtual-key code (Win32 VK_* on this backend).</summary>
     event Action<int>? KeyDown;
 
+    /// <summary>Raised once per typed character (Win32 WM_CHAR), already resolved for shift/caps-lock/keyboard
+    /// layout — use this instead of <see cref="KeyDown"/> for text-entry fields (e.g. a login form).</summary>
+    event Action<char>? CharInput;
+
     /// <summary>True while this window is the foreground (focused) window. Gate continuous input polling on this
     /// so held keys don't keep affecting the app while some other window has focus.</summary>
     bool HasFocus { get; }

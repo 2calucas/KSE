@@ -163,6 +163,20 @@ internal static class Program
         using IShaderModule uiVertexShader = CompileShader(device, DxcShaderStage.Vertex, Shaders.UiVertex, ShaderStage.Vertex, "ui.vs.hlsl");
         using IShaderModule uiFragmentShader = CompileShader(device, DxcShaderStage.Pixel, Shaders.UiFragment, ShaderStage.Fragment, "ui.ps.hlsl");
 
+        // ---- Login / sign-up gate: nothing below this point (scene geometry, ray tracing, the main render
+        // loop) runs until a user has logged in or created an account. Rendered with the engine's own
+        // pipeline via LoginScreen, not a separate GUI toolkit, so it's genuinely built into this .exe. ----
+        var accountStore = new AccountStore();
+        using var loginScreen = new LoginScreen(accountStore, device, queue, uiVertexShader, uiFragmentShader, TextureFormat.BGRA8Unorm);
+        string? loggedInUsername = RunLoginGate(window, swapChain, queue, loginScreen, width, height);
+        if (loggedInUsername is null)
+        {
+            return; // window closed before authenticating
+        }
+        Console.WriteLine($"Logged in as \"{loggedInUsername}\".");
+        width = swapChain.Descriptor.Width;
+        height = swapChain.Descriptor.Height;
+
         using ISampler shadowSampler = device.CreateSampler(new SamplerDescriptor(
             FilterMode.Linear, FilterMode.Linear, MipmapFilterMode.Nearest,
             AddressMode.ClampToEdge, AddressMode.ClampToEdge, AddressMode.ClampToEdge,
@@ -683,6 +697,75 @@ internal static class Program
         shadowMap.Texture.Dispose();
         mainResourceSet.Dispose();
         blitResourceSet.Dispose();
+    }
+
+    /// <summary>Pumps messages and renders <paramref name="loginScreen"/> exclusively until it reports a
+    /// successful login/sign-up or the window is closed. Returns the logged-in username, or null if the
+    /// window was closed first (the caller should exit immediately in that case, without building the scene).</summary>
+    private static string? RunLoginGate(IWindow window, ISwapChain swapChain, ICommandQueue queue, LoginScreen loginScreen, uint width, uint height)
+    {
+        void OnChar(char c) => loginScreen.HandleChar(c);
+        void OnKeyDown(int vk) => loginScreen.HandleKeyDown(vk);
+        (uint Width, uint Height)? pendingResize = null;
+        void OnResized(uint w, uint h) => pendingResize = (w, h);
+
+        window.CharInput += OnChar;
+        window.KeyDown += OnKeyDown;
+        window.Resized += OnResized;
+
+        Dictionary<ITexture, ITextureView> viewCache = [];
+        try
+        {
+            while (!window.ShouldClose && !loginScreen.IsAuthenticated)
+            {
+                window.PumpMessages();
+                if (window.ShouldClose) break;
+
+                if (pendingResize is { } resize)
+                {
+                    foreach (var v in viewCache.Values) v.Dispose();
+                    viewCache.Clear();
+
+                    swapChain.Resize(resize.Width, resize.Height);
+                    width = swapChain.Descriptor.Width;
+                    height = swapChain.Descriptor.Height;
+                    pendingResize = null;
+                }
+
+                ITexture backBuffer = swapChain.AcquireNextTexture();
+                if (!viewCache.TryGetValue(backBuffer, out ITextureView? backBufferView))
+                {
+                    backBufferView = backBuffer.CreateView(new TextureViewDescriptor(0, 1, 0, 1));
+                    viewCache[backBuffer] = backBufferView;
+                }
+
+                ICommandBuffer cmd = queue.CreateCommandBuffer();
+                cmd.Begin();
+                cmd.TransitionTexture(backBuffer, backBuffer.CurrentState, ResourceState.RenderTarget);
+                cmd.BeginRenderPass(new RenderPassDescriptor([new ColorAttachment(backBufferView, true, 0.05f, 0.05f, 0.08f, 1f)]));
+                cmd.SetViewport(new Viewport(0, 0, width, height));
+                cmd.SetScissor(new ScissorRect(0, 0, width, height));
+                loginScreen.Render(cmd, width, height);
+                cmd.EndRenderPass();
+                cmd.TransitionTexture(backBuffer, ResourceState.RenderTarget, ResourceState.Present);
+                cmd.End();
+
+                queue.Submit([cmd]);
+                swapChain.Present();
+                cmd.Dispose();
+            }
+        }
+        finally
+        {
+            window.CharInput -= OnChar;
+            window.KeyDown -= OnKeyDown;
+            window.Resized -= OnResized;
+            queue.WaitIdle();
+            foreach (var view in viewCache.Values)
+                view.Dispose();
+        }
+
+        return window.ShouldClose ? null : loginScreen.LoggedInUsername;
     }
 
     private static void MemoryMarshalCopy<T>(T[] source, IBuffer destination) where T : unmanaged

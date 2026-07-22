@@ -1,0 +1,41 @@
+Date,Day,Hours,Activity,Notes
+2026-03-19,Thursday,3.0 (est.),"Repository initialised; LICENSE and README drafted/updated; initial structure","Commits 4d27d6e..0ec498e"
+2026-03-20,Friday,0,No commit activity,
+2026-03-21,Saturday,0,No commit activity,
+2026-03-22,Sunday,4.0 (est.),"Config/script stubs; switched to personal-use LICENSE.md; placeholder file tree added; KSE crash report editor skeleton; README revised","Commits f6d19fd..da81219"
+2026-03-23,Monday,2.5 (est.),"Window/script-editor planning notes; CodeQL and Conda/Python CI workflows added","Commits 0a3e9b6..18e0eb7"
+2026-03-24,Tuesday,0,No commit activity,
+2026-03-25,Wednesday,0,No commit activity,
+2026-03-26,Thursday,2.0 (est.),"Folder layout update; GLFW 3.4 vendored in as a prospective windowing layer","Commits 3764ab0, 960bfde"
+2026-03-27,Friday,0,No commit activity,
+2026-03-28,Saturday,0,No commit activity,
+2026-03-29,Sunday,0,No commit activity,
+2026-03-30,Monday,0,No commit activity,
+2026-03-31,Tuesday,0,No commit activity,
+2026-04-01,Wednesday,0,No commit activity,
+2026-04-02,Thursday,0,"No commit activity (8-week gap begins)","See Development Log Phase 2"
+2026-05-27,Wednesday,0,"No commit activity (8-week gap ends)","See Development Log Phase 2"
+2026-05-28,Thursday,0,No commit activity,
+2026-05-29,Friday,0,No commit activity,
+2026-05-30,Saturday,0,No commit activity,
+2026-05-31,Sunday,0,No commit activity,
+2026-06-01,Monday,5.0 (est.),"Authored Documents/Description: Statement of Intent, Purpose, Project Overview, Aims and Goals; added Documents/ folder","Commits ef4bb0e..968e6ba"
+2026-06-02,Tuesday,0,No commit activity,
+2026-06-03,Wednesday,0,No commit activity,
+2026-06-04,Thursday,0,"No commit activity (6-week gap begins)","See Development Log Phase 4"
+2026-07-15,Wednesday,0,"No commit activity (6-week gap ends)","See Development Log Phase 4"
+2026-07-16,Thursday,0,No commit activity,
+2026-07-17,Friday,0,No commit activity,
+2026-07-18,Saturday,0,No commit activity,
+2026-07-19,Sunday,0,No commit activity,
+2026-07-20,Monday,0,No commit activity,
+2026-07-21,Tuesday,0,No commit activity,
+2026-07-22,Wednesday,6.0 (est.),"README roadmap update; major architecture rewrite - RHI interface layer, Vulkan backend (incl. ray tracing), in-progress Direct3D 12 backend, Win32 windowing layer, Sandbox sample scene","Commits b11073a, 50a5d0b, c1bb2c4"
+2026-07-22,Wednesday (cont.),3.5 (est.),"Login/sign-up feature (password hashing, account store, login screen, Win32 text-input support) and full documentation set","Same-day follow-on session"
+2026-07-23,Thursday,TBC,TO BE COMPLETED,
+2026-07-24,Friday,TBC,TO BE COMPLETED,
+2026-07-25,Saturday,TBC,TO BE COMPLETED,
+2026-07-26,Sunday,TBC,TO BE COMPLETED,
+2026-07-27,Monday,TBC,TO BE COMPLETED,
+2026-07-28,Tuesday,TBC,TO BE COMPLETED,
+2026-07-29,Wednesday,TBC,TO BE COMPLETED,

@@ -11,6 +11,7 @@ public sealed partial class Win32Window : IWindow
     private const uint WM_CLOSE = 0x0010;
     private const uint WM_SIZE = 0x0005;
     private const uint WM_KEYDOWN = 0x0100;
+    private const uint WM_CHAR = 0x0102;
     private const int CW_USEDEFAULT = unchecked((int)0x80000000);
 
     public nint Handle { get; }
@@ -20,6 +21,7 @@ public sealed partial class Win32Window : IWindow
 
     public event Action<uint, uint>? Resized;
     public event Action<int>? KeyDown;
+    public event Action<char>? CharInput;
 
     public bool HasFocus => GetForegroundWindow() == Handle;
 
@@ -125,6 +127,9 @@ public sealed partial class Win32Window : IWindow
                 return 0;
             case WM_KEYDOWN:
                 KeyDown?.Invoke((int)wParam.ToInt64());
+                return 0;
+            case WM_CHAR:
+                CharInput?.Invoke((char)wParam.ToInt64());
                 return 0;
         }
         return DefWindowProcW(hWnd, msg, wParam, lParam);
