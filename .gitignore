@@ -1,0 +1,7 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+.idea/
+third_party/FidelityFX-SDK/

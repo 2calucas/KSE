@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/Sandbox/Sandbox.csproj">
+      <Platform Project="x64" />
+    </Project>
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Engine.RHI.Direct3D12/Engine.RHI.Direct3D12.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="src/Engine.RHI.Vulkan/Engine.RHI.Vulkan.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="src/Engine.RHI/Engine.RHI.csproj" />
+    <Project Path="src/Engine.Windowing/Engine.Windowing.csproj">
+      <Platform Project="x64" />
+    </Project>
+  </Folder>
+</Solution>
