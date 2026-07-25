@@ -39,6 +39,7 @@ internal static class Program
     private const int VK_CONTROL = 0x11;
     private const int VK_SPACE = 0x20;
     private const int VK_RBUTTON = 0x02;
+    private const int VK_ESCAPE = 0x1B;
 
     // TLAS InstanceCustomIndex values — must match the ShadeHit()/ShadeHitTerminal() mapping in Shaders.FragmentRT.
     private const uint InstanceCube = 0;
@@ -165,18 +166,40 @@ internal static class Program
 
         // ---- Login / sign-up gate: nothing below this point (scene geometry, ray tracing, the main render
         // loop) runs until a user has logged in or created an account. Rendered with the engine's own
-        // pipeline via LoginScreen, not a separate GUI toolkit, so it's genuinely built into this .exe. ----
+        // pipeline via LoginScreen, not a separate GUI toolkit, so it's genuinely built into this .exe.
+        // Pressing Escape while in the scene logs out and returns here (RunScene returns false) instead of
+        // closing the window; closing the window instead (RunScene returns true) ends the loop entirely. ----
         var accountStore = new AccountStore();
-        using var loginScreen = new LoginScreen(accountStore, device, queue, uiVertexShader, uiFragmentShader, TextureFormat.BGRA8Unorm);
-        string? loggedInUsername = RunLoginGate(window, swapChain, queue, loginScreen, width, height);
-        if (loggedInUsername is null)
+        while (true)
         {
-            return; // window closed before authenticating
-        }
-        Console.WriteLine($"Logged in as \"{loggedInUsername}\".");
-        width = swapChain.Descriptor.Width;
-        height = swapChain.Descriptor.Height;
+            using var loginScreen = new LoginScreen(accountStore, device, queue, uiVertexShader, uiFragmentShader, TextureFormat.BGRA8Unorm);
+            string? loggedInUsername = RunLoginGate(window, swapChain, queue, loginScreen, width, height);
+            if (loggedInUsername is null)
+            {
+                return; // window closed before authenticating
+            }
+            Console.WriteLine($"Logged in as \"{loggedInUsername}\".");
+            width = swapChain.Descriptor.Width;
+            height = swapChain.Descriptor.Height;
 
+            bool windowClosed = RunScene(window, device, queue, swapChain, rtSupported,
+                vertexShader, mainFragmentShader, shadowVertexShader, shadowFragmentShader, uiVertexShader, uiFragmentShader,
+                width, height);
+            if (windowClosed)
+            {
+                return;
+            }
+            Console.WriteLine("Logged out.");
+        }
+    }
+
+    /// <summary>Builds every scene resource and runs the main render loop for one logged-in session, until
+    /// either the window is closed (returns true) or the user presses Escape to log out (returns false, and
+    /// the caller in <see cref="Main"/> loops back to <see cref="RunLoginGate"/>).</summary>
+    private static bool RunScene(IWindow window, IGraphicsDevice device, ICommandQueue queue, ISwapChain swapChain, bool rtSupported,
+        IShaderModule vertexShader, IShaderModule mainFragmentShader, IShaderModule shadowVertexShader, IShaderModule shadowFragmentShader,
+        IShaderModule uiVertexShader, IShaderModule uiFragmentShader, uint width, uint height)
+    {
         using ISampler shadowSampler = device.CreateSampler(new SamplerDescriptor(
             FilterMode.Linear, FilterMode.Linear, MipmapFilterMode.Nearest,
             AddressMode.ClampToEdge, AddressMode.ClampToEdge, AddressMode.ClampToEdge,
@@ -392,14 +415,18 @@ internal static class Program
         var frameStats = new FrameStats();
         var camera = new Camera(new Vector3(0f, 2.8f, -5.8f), new Vector3(0f, 1.1f, 0f));
 
-        window.KeyDown += vk =>
+        bool loggedOut = false;
+        void OnKeyDown(int vk)
         {
             if (vk == VK_DOWN) qualityOverlay.CycleNext();
             else if (vk == VK_UP) qualityOverlay.CyclePrevious();
-        };
+            else if (vk == VK_ESCAPE) loggedOut = true;
+        }
+        window.KeyDown += OnKeyDown;
 
         (uint Width, uint Height)? pendingResize = null;
-        window.Resized += (w, h) => pendingResize = (w, h);
+        void OnResized(uint w, uint h) => pendingResize = (w, h);
+        window.Resized += OnResized;
 
         Dictionary<ITexture, ITextureView> viewCache = [];
         var stopwatch = Stopwatch.StartNew();
@@ -427,11 +454,13 @@ internal static class Program
             blitResourceSet = BuildBlitResourceSet();
         }
 
-        Console.WriteLine("Rendering. Up/Down arrows cycle quality. Hold Right Mouse to look, WASD to move, Space/Ctrl for up/down, Shift to sprint. Fly to x=25 to find the indoor room. Close the window to exit.");
-        while (!window.ShouldClose)
+        try
+        {
+        Console.WriteLine("Rendering. Up/Down arrows cycle quality. Hold Right Mouse to look, WASD to move, Space/Ctrl for up/down, Shift to sprint. Esc to log out. Fly to x=25 to find the indoor room. Close the window to exit.");
+        while (!window.ShouldClose && !loggedOut)
         {
             window.PumpMessages();
-            if (window.ShouldClose) break;
+            if (window.ShouldClose || loggedOut) break;
 
             if (pendingResize is { } resize)
             {
@@ -697,6 +726,16 @@ internal static class Program
         shadowMap.Texture.Dispose();
         mainResourceSet.Dispose();
         blitResourceSet.Dispose();
+        }
+        finally
+        {
+            // Unsubscribe before returning so a subsequent RunScene call (after logging back in) doesn't
+            // stack a second handler referencing this session's now-disposed qualityOverlay/pendingResize.
+            window.KeyDown -= OnKeyDown;
+            window.Resized -= OnResized;
+        }
+
+        return window.ShouldClose;
     }
 
     /// <summary>Pumps messages and renders <paramref name="loginScreen"/> exclusively until it reports a

@@ -24,7 +24,8 @@ reflections, and global illumination.
   screen (rendered through the engine's own pipeline, not a separate GUI toolkit). Accounts are stored
   locally under `%LOCALAPPDATA%\KSE\accounts.json`; passwords are never stored in plaintext — only a
   per-account random salt and a PBKDF2-HMAC-SHA256 hash (600,000 iterations). See
-  `Documents/02-Research.md` §2.7 for why this algorithm was chosen.
+  `Documents/02-Research.md` §2.7 for why this algorithm was chosen. Press **Esc** at any point in the
+  scene to log out and return to the login screen without closing the app.
 
 ## Documentation
 

@@ -39,19 +39,20 @@ blank for you to fill in as those days occur — do not fill them in ahead of ti
 | **Week 18 subtotal** | | **9.5** | | |
 | 23/07/2026 | Thursday | ☐ _to be completed_ | | |
 | 24/07/2026 | Friday | ☐ _to be completed_ | | |
-| 25/07/2026 | Saturday | ☐ _to be completed_ | | |
+| 25/07/2026 | Saturday | 1.5 (est.) | Added Escape-to-logout: pressing Esc in the scene now tears down scene resources and returns to a fresh login/sign-up screen instead of closing the app; `run_me.exe` rebuilt and re-verified end to end | Same-day follow-on session |
 | 26/07/2026 | Sunday | ☐ _to be completed_ | | |
 | 27/07/2026 | Monday | ☐ _to be completed_ | | |
 | 28/07/2026 | Tuesday | ☐ _to be completed_ | | |
 | 29/07/2026 | Wednesday | ☐ _to be completed_ | | |
-| **Week 19 subtotal** | | _to be completed_ | | |
+| **Week 19 subtotal** | | _to be completed (1.5 so far)_ | | |
 
 ## Totals
 
 | | Hours |
 |---|---|
 | Total logged/estimated (19/03/2026 – 22/07/2026) | **26.0** |
-| Week 19 (23/07 – 29/07/2026) | *not yet occurred — complete as the week happens* |
-| **Grand total (provisional, excludes Week 19)** | **26.0** |
+| 25/07/2026 (Week 19, partial) | **1.5 (est.)** |
+| Week 19 remainder (23/07, 24/07, 26/07 – 29/07/2026) | *not yet occurred/blank — complete as those days happen* |
+| **Grand total so far** | **27.5** |
 
 A plain-data version of this table is provided in `Timesheet.csv` for opening directly in Excel/Sheets.

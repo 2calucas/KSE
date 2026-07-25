@@ -34,7 +34,7 @@ Date,Day,Hours,Activity,Notes
 2026-07-22,Wednesday (cont.),3.5 (est.),"Login/sign-up feature (password hashing, account store, login screen, Win32 text-input support) and full documentation set","Same-day follow-on session"
 2026-07-23,Thursday,TBC,TO BE COMPLETED,
 2026-07-24,Friday,TBC,TO BE COMPLETED,
-2026-07-25,Saturday,TBC,TO BE COMPLETED,
+2026-07-25,Saturday,1.5 (est.),"Added Escape-to-logout (returns to a fresh login/sign-up screen instead of closing); rebuilt and re-verified run_me.exe","Same-day follow-on session"
 2026-07-26,Sunday,TBC,TO BE COMPLETED,
 2026-07-27,Monday,TBC,TO BE COMPLETED,
 2026-07-28,Tuesday,TBC,TO BE COMPLETED,

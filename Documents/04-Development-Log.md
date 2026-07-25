@@ -97,5 +97,11 @@ document set:
 - Verified via `dotnet build` that the change compiles cleanly and does not affect the pre-existing,
   unrelated Direct3D 12 build failure (`03-Implementation.md` §3.2).
 
-*(23/07 – 29/07/2026 remaining days: to be completed as they occur — see `05-Timesheet.md` for the
+**25/07/2026 follow-up:** added Escape-to-logout — pressing Esc while in the scene now tears down the
+scene's GPU resources and returns to a fresh `LoginScreen` (via a new `RunScene` method that `Main()` calls
+in a loop, alongside `RunLoginGate`) instead of doing nothing, giving the login system a real logout path
+rather than only "close the app to switch accounts." `run_me.exe` at the repository root was rebuilt from
+the updated source.
+
+*(23/07, 24/07, and 26/07 – 29/07/2026: to be completed as they occur — see `05-Timesheet.md` for the
 day-by-day template.)*

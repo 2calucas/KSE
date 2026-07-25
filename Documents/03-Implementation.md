@@ -35,12 +35,16 @@ touch the RHI or backend projects except for one small, generically useful addit
 (a `CharInput` event, described in §3.3). Control flow in `Program.Main()` is now:
 
 1. Create the window, the Vulkan device, the swap chain, and compile shaders (unchanged from before).
-2. **New:** construct an `AccountStore` and a `LoginScreen`, then run `RunLoginGate(...)` — a small
-   message-pump loop that renders *only* the login/sign-up panel to the swap chain and feeds keyboard
-   input into it, until the user authenticates or closes the window.
+2. **New:** construct an `AccountStore`, then loop: construct a fresh `LoginScreen` and run
+   `RunLoginGate(...)` — a small message-pump loop that renders *only* the login/sign-up panel to the
+   swap chain and feeds keyboard input into it, until the user authenticates or closes the window.
 3. If the window was closed before authenticating, exit immediately — none of the scene resources
    (meshes, shadow map, acceleration structures) are ever created.
-4. Otherwise, proceed exactly as before: build the scene, and run the existing main render loop.
+4. Otherwise, call `RunScene(...)` — a new method holding everything that used to run inline in `Main()`:
+   it builds the scene and runs the main render loop until either the window closes (`RunScene` returns
+   `true`, and `Main()` exits) or the user presses **Escape** (`RunScene` returns `false`). Escape disposes
+   every scene GPU resource and returns to step 2, so the user lands back on a fresh login/sign-up screen
+   without the process restarting — a real logout, not just a pause.
 
 ## 3.2 Known Issues
 
@@ -151,7 +155,7 @@ Depends on `Vortice.Direct3D12` 3.8.2, `Vortice.DXGI` 3.8.3, `Vortice.Dxc` 3.8.3
 | File | Purpose |
 |---|---|
 | `Sandbox.csproj` | Executable project (`net10.0-windows`, `AssemblyName=run_test`); references `Engine.RHI`, `Engine.RHI.Vulkan`, and `Engine.Windowing` (not the D3D12 backend); pulls in `System.Diagnostics.PerformanceCounter` and `System.Drawing.Common`. |
-| `Program.cs` | Entry point. Compiles shaders, creates the device/swap chain, **runs the new login/sign-up gate (`RunLoginGate`) before building any scene resources**, then builds the shadow map, scene color target, meshes, BLAS/TLAS, and runs the main per-frame render loop (shadow pass → main pass → blit/upscale pass → UI overlay pass). |
+| `Program.cs` | Entry point. Compiles shaders, creates the device/swap chain, then loops between **`RunLoginGate`** (login/sign-up, blocks until authenticated) and **`RunScene`** (builds the shadow map, scene color target, meshes, BLAS/TLAS, and runs the main per-frame render loop — shadow pass → main pass → blit/upscale pass → UI overlay pass — until the window closes or the user presses **Escape** to log out, which tears the scene down and returns to `RunLoginGate`). |
 | `Camera.cs` | Free-fly camera (Unreal-editor-viewport style): WASD + mouse-look, Space/Ctrl for vertical movement, Shift to sprint. |
 | `Cube.cs`, `Plane.cs`, `Quad.cs`, `Sphere.cs`, `Cone.cs` | Procedural mesh generators sharing one interleaved position(3)+normal(3)+uv(2) vertex layout, so every mesh works with the same pipelines and acceleration-structure build path with no asset pipeline needed. |
 | `Shaders.cs` | All HLSL shader source, compiled at runtime by DXC to either DXIL or SPIR-V (see `02-Research.md` §2.4): the main forward-pass vertex shader, a non-ray-traced fragment shader (shadow-map shadows only), a ray-traced fragment shader (real shadow rays, reflections, and bounded multi-bounce GI via inline ray queries), the depth-only shadow-pass shaders, and the unlit textured-quad UI shaders shared by every overlay **and by the new `LoginScreen`**. |
