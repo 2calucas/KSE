@@ -104,9 +104,13 @@ that were both already flagged as documented simplifications rather than product
 
 ## 8.5 Client Involvement
 
-Mechelle Chapman (see [`07-Client.md`](07-Client.md)) ran through the functional test cases in §8.3 as part
-of the same testing pass, from a first-time-user perspective rather than a developer's. Their feedback is
-recorded separately in `07-Client.md` §7.5 once that session is complete.
+Michelle Chapman (see [`07-Client.md`](07-Client.md)) ran through part of the brief in §8.3 as part of a
+separate session on 29/07/2026, from a first-time-user perspective rather than a developer's. She completed
+account creation and login (TC01/TC05) successfully, but needed continuous guidance from the developer and
+repeated reference to the README's control table to manage the in-scene movement controls — a usability
+finding distinct from the pass/fail functional results above, given her limited recent hands-on experience
+with a keyboard-and-mouse PC. Full detail is recorded in `07-Client.md` §7.5, since that account is about
+her experience as a user rather than the feature-by-feature correctness this section covers.
 
 ## 8.6 Conclusion
 
