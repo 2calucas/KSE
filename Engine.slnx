@@ -16,4 +16,7 @@
       <Platform Project="x64" />
     </Project>
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Engine.Tests/Engine.Tests.csproj" />
+  </Folder>
 </Solution>

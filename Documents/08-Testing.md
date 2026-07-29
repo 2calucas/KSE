@@ -112,7 +112,48 @@ finding distinct from the pass/fail functional results above, given her limited 
 with a keyboard-and-mouse PC. Full detail is recorded in `07-Client.md` §7.5, since that account is about
 her experience as a user rather than the feature-by-feature correctness this section covers.
 
-## 8.6 Conclusion
+## 8.7 User Acceptance Testing (UAT) Script and Client Sign-Off
+
+The functional test cases in §8.3 are the developer's own tests. This section is the separate artefact the
+assessment brief asks for: a script written *for the client to execute herself*, plus a template for the
+email she sends back with her results. Michelle's informal session (§8.5, `07-Client.md` §7.5) already
+surfaced the biggest real finding — that the controls need guidance for an infrequent PC user — so the
+script below keeps that context rather than pretending the informal session didn't happen: it asks her to
+mark each step as she did it, guidance included, not to redo the whole session unaided.
+
+### 8.7.1 UAT Script
+
+| Step | Instruction | Expected result | Client result (to be completed by Michelle) | Pass/Fail |
+|---|---|---|---|---|
+| UAT1 | Launch `run_me.exe`. Create an account using a username and password you'll remember. | The 3D scene appears after submitting. | | |
+| UAT2 | Close the app, reopen it, and log back in with the same details. | You're back in the same scene. | | |
+| UAT3 | Try logging in with the wrong password on purpose. | A message tells you the login failed, without saying which part was wrong. | | |
+| UAT4 | Move around the scene using the controls in `README.md` → *How to use it*, with help if you need it. | You can move the camera and look around. | | |
+| UAT5 | Press the Up/Down arrow keys a few times. | The picture in the corner of the screen changes between quality levels, and the scene may look sharper or blurrier. | | |
+| UAT6 | Try to find the indoor room (there's an on-screen hint about which direction to fly). | You find a room with different lighting from the outdoor scene. | | |
+| UAT7 | Press Esc. | You're returned to the login screen, and the app is still running (not closed). | | |
+| UAT8 | Overall — was anything confusing, broken, or worth mentioning? | (open-ended) | | N/A |
+
+### 8.7.2 Client UAT Results Email (Template)
+
+As with §7.6, this is a **template** for Michelle to send once she has completed §8.7.1 with her own
+results filled in — it is left as a template rather than a fabricated reply, so that the actual submitted
+evidence is a real email from her:
+
+> **Subject:** UAT results — KSE testing
+>
+> Hi Cal,
+>
+> Here are my results from going through the test script:
+>
+> [Michelle pastes/describes her completed copy of the table in §8.7.1 here, including anything under UAT8.]
+>
+> Michelle
+
+Once received, log the date in `09-Project-Plan.md` §9.2.1 next to "Client written sign-off + UAT email"
+and update that row's % complete from 0%.
+
+## 8.8 Conclusion
 
 Every functional test case in §8.3 passed. Performance is capped by vsync at a healthy frame rate for this
 hardware, and the occasional dip to 50–70 FPS has a specific, source-grounded explanation (§8.4.2) rather

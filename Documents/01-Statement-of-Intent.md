@@ -37,9 +37,13 @@ The document set consists of:
 | `03-Implementation.md` | Architecture overview and a file-by-file explanation of every source file |
 | `04-Development-Log.md` | A weekly log of development activity, tied to real commit history |
 | `05-Timesheet.md` (+ `Timesheet.csv`) | Logged/estimated hours across the project timeline |
-| `06-Report.md` | Evaluation against the goals in §1.5, plus a flowchart/pseudocode deep dive into the hardest script to follow |
+| `06-Report.md` | Evaluation against the goals in §1.5, plus a flowchart/pseudocode deep dive into the hardest script to follow, plus the Assessment Task 2 development-justification report (§6.7) |
 | `07-Client.md` | The external client tester who reviewed the finished build, and the brief they were given |
-| `08-Testing.md` | Functional and performance testing carried out on the finished build |
+| `08-Testing.md` | Functional and performance testing, plus the UAT script for the client to execute |
+| `09-Project-Plan.md` | Development-approach justification, Gantt chart, and weekly % complete updates |
+| `10-Requirements.md` | Functional requirements, non-functional requirements, and acceptance criteria |
+| `11-Design.md` | Design documents: a UML class diagram of the RHI abstraction, and an IPO chart covering data security |
+| `12-Outcome-Mapping.md` | Maps HSC Software Engineering outcomes (SE-12-01–09) to the specific evidence for each |
 
 ## 1.3 Project Overview
 

@@ -169,6 +169,16 @@ Depends on `Vortice.Direct3D12` 3.8.2, `Vortice.DXGI` 3.8.3, `Vortice.Dxc` 3.8.3
 | **`AccountStore.cs`** *(new)* | Local, file-backed account store (`%LOCALAPPDATA%\KSE\accounts.json`, via a source-generated `JsonSerializerContext` for trimming-friendly JSON). `TryCreateAccount`/`TryLogin` validate input, enforce a minimum username/password length, and never store or return plaintext passwords. Login failures use one generic error message regardless of whether the username exists, to avoid username enumeration. |
 | **`LoginScreen.cs`** *(new)* | The login/sign-up UI itself — same GDI+ texture-blit technique as `UiOverlay`/`StatsOverlay`, but centered on screen and interactive rather than corner-anchored and read-only. Owns its own pipeline/resource-set-layout/sampler (mirroring the other overlays' self-contained construction). Handles `CharInput` for text entry and `KeyDown` for Tab (switch field)/Backspace/Enter (submit)/F2 (toggle Login ↔ Create Account); masks the password field with `•`; shows inline validation/error text; exposes `IsAuthenticated`/`LoggedInUsername` once a login or sign-up succeeds. |
 
+### `tests/Engine.Tests/` — automated unit tests
+
+| File | Purpose |
+|---|---|
+| `Engine.Tests.csproj` | xUnit test project (`net10.0-windows`, to match `Sandbox`); references `Sandbox.csproj` directly. |
+| `PasswordHasherTests.cs` | 5 unit tests for `PasswordHasher` (correct password verifies, wrong password fails, two hashes of the same password use different salts, the documented 600,000-iteration count is pinned, a tampered stored hash fails verification). The only class pure enough to unit-test without a GPU/window — everything else is covered by the manual functional/UAT tests in `08-Testing.md` instead. |
+
+`Sandbox.csproj` grants it access via `<InternalsVisibleTo Include="Engine.Tests" />`, since `PasswordHasher`
+is `internal` and this project didn't want to make it public API just to test it.
+
 ### `Documents/` — this document set
 
 | File | Purpose |
@@ -178,6 +188,10 @@ Depends on `Vortice.Direct3D12` 3.8.2, `Vortice.DXGI` 3.8.3, `Vortice.Dxc` 3.8.3
 | `03-Implementation.md` | This document. |
 | `04-Development-Log.md` | A weekly log built from real commit history (see next section), organized into development phases rather than a flat week-by-week list. |
 | `05-Timesheet.md` / `Timesheet.csv` | Logged/estimated hours, 19/03/2026 through 29/07/2026. |
-| `06-Report.md` | Evaluation against `01-Statement-of-Intent.md` §1.5, plus a flowchart/pseudocode deep dive into `Program.cs`. |
+| `06-Report.md` | Evaluation against `01-Statement-of-Intent.md` §1.5, plus a flowchart/pseudocode deep dive into `Program.cs`, plus the Assessment Task 2 report (§6.7). |
 | `07-Client.md` | The external client tester and the brief they were given before testing the finished build. |
-| `08-Testing.md` | Functional test cases and performance results (frame time/1% lows) for the finished build. |
+| `08-Testing.md` | Functional test cases, performance results (frame time/1% lows), and the client's UAT script for the finished build. |
+| `09-Project-Plan.md` | WAgile justification, Gantt chart, and Thursday-by-Thursday % complete updates. |
+| `10-Requirements.md` | Functional/non-functional requirements and acceptance criteria, cross-referenced to `08-Testing.md`'s test cases. |
+| `11-Design.md` | A UML class diagram of `Engine.RHI`, and an IPO chart of the account creation/login flow (also the data-security design document). |
+| `12-Outcome-Mapping.md` | Maps each SE-12-0x outcome to the specific file/section that satisfies it. |

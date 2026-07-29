@@ -9,9 +9,14 @@
 
 ## 7.1 Who the Client Is
 
-**Michelle Chapman** agreed to act as the external client tester for KSE: someone outside of the
-development process who tests the finished build from a user's point of view rather than a developer's,
-and whose feedback is recorded separately from the author's own notes elsewhere in this document set.
+**Project identification:** the selected project is **KSE (KingStudio Engine)**, a Vulkan-based real-time
+3D rendering engine with a secure local login/sign-up system gating access to its sample scene (see
+`01-Statement-of-Intent.md`) — it falls under the assessment brief's "another option of your choice"
+category, and satisfies that category's secure-storage requirement through salted, iterated password
+hashing (`11-Design.md` §11.2–§11.3). **Michelle Chapman** agreed to act as the external client for the
+project: someone outside of the development process, without a technical/software background, who tests
+the finished build from a user's point of view rather than a developer's, and whose feedback is recorded
+separately from the author's own notes elsewhere in this document set.
 
 ## 7.2 Why an External Client Tester
 
@@ -80,3 +85,25 @@ that's recorded here rather than left out:
 | Quality tiers | Not specifically exercised in this account of the session. | — |
 | Logout (Esc) | Not specifically exercised in this account of the session. | — |
 | Anything else | Overall: usable with sustained, hands-on guidance; not yet approachable for an unassisted, infrequent PC user. | This is a genuinely useful finding distinct from the functional pass/fail results in `08-Testing.md` §8.3 — those confirm the features work; this confirms they aren't yet easy for every kind of user to discover unaided. |
+
+## 7.6 Client Willingness Email (Template)
+
+The assessment brief asks for "an email from the client indicating their willingness to support you in the
+project," submitted alongside the project identification paragraph in §7.1. The template below is what
+that email should say once actually sent by Michelle from her own address — **it is not a real, sent email,
+and is not filled in as one**, for the same reason the agreement in §7.4 is left as a template: only
+Michelle can actually send it. Forward or re-key this into an email from her and attach that email (not
+this file) as the submitted evidence.
+
+> **Subject:** Happy to help test your engine project
+>
+> Hi Cal,
+>
+> Yes, I'm happy to be the client tester for your KSE project for your Software Engineering assessment.
+> I understand this is a coursework project rather than a commercial product, and I'm willing to try out
+> the finished build and give you honest feedback on it.
+>
+> Michelle
+
+Once Michelle's real reply exists, note its date in `09-Project-Plan.md` §9.2.1 ("Client written sign-off +
+UAT email") and update that row's % complete accordingly.

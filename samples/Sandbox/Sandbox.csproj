@@ -7,6 +7,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Lets tests/Engine.Tests unit-test PasswordHasher/AccountStore without making them public API. -->
+    <InternalsVisibleTo Include="Engine.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.10" />
     <PackageReference Include="System.Drawing.Common" Version="10.0.10" />
   </ItemGroup>

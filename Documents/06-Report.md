@@ -290,8 +290,10 @@ report can honestly claim:
 - The Direct3D 12 backend does not compile (`CS0721` in `D3D12Utils.cs`) and its ray-tracing path
   (`D3D12AccelerationStructure`) does not exist yet; the Sandbox only ever instantiates the Vulkan backend,
   so this does not affect running the application.
-- There is no automated test suite; correctness has been verified by running the Sandbox and observing
-  behaviour, not by unit/integration tests.
+- Automated testing is limited to `tests/Engine.Tests` (5 unit tests covering `PasswordHasher`, the one
+  piece of logic pure enough to unit test without a GPU/window); everything else — rendering, input,
+  quality tiers, the login/logout flow itself — is still verified by running the Sandbox and observing
+  behaviour, not by integration tests (`08-Testing.md`).
 - The swap chain forces a full `WaitIdle()` on present/resize on both backends — acceptable for a
   single-window sample, not representative of production frame pacing.
 - The TLAS is fully rebuilt every frame rather than incrementally refit (§6.4.3) — simpler and correct, but
@@ -307,3 +309,54 @@ this document set's stated approach to scope (`01-Statement-of-Intent.md` §1.7)
 if this project continues past this document set, is fixing the Direct3D 12 build error in `D3D12Utils.cs`
 and implementing `D3D12AccelerationStructure` — at that point Goal 1 in §6.3 would move from "partially
 met" to "met."
+
+## 6.7 Development Justification (Assessment Task 2 Report)
+
+Added alongside `Documents/09`–`12` once the exact assessment brief for this submission was confirmed, so
+this section comes after the Conclusion rather than before it — the report itself is evidence of the same
+honesty-about-when-things-were-written principle as `09-Project-Plan.md` §9.5. It directly answers the
+brief's Report requirements (~300–500 words); everything here is a summary with pointers to fuller evidence
+elsewhere in this document set.
+
+**Development approach.** KSE used **WAgile**, not pure Waterfall or pure Agile (`09-Project-Plan.md`
+§9.1). A shared abstraction layer used by multiple backends (`Engine.RHI`) is expensive to redesign
+mid-flight, so the RHI/Vulkan/windowing core was planned and built as one large, sequential unit —
+Waterfall-appropriate. The account system that came after it, by contrast, shipped as three small, each
+independently working increments (hashing/storage → UI → logout) over one week — Agile-appropriate. Pure
+Waterfall would have meant designing the login system's full spec before writing any of it, which wasn't
+necessary once the RHI existed to build on; pure Agile from day one would have meant redesigning the RHI
+interfaces repeatedly as each backend exposed gaps, which is exactly the churn an interface layer is meant
+to avoid.
+
+**Design-document tooling.** Mermaid (`11-Design.md`) was chosen over a dedicated diagramming tool
+(draw.io/Lucidchart) or a Word document with pasted screenshots. Mermaid diagrams live as text in the same
+Markdown files and git history as everything else, so they're diffable, versioned, and never go stale
+relative to the code the way an exported image can. The tradeoff is layout control — Lucidchart produces a
+more polished visual result — but for a solo technical project, "correct and versioned" mattered more than
+"polished."
+
+**Technology choice.** C#/.NET + Vulkan was chosen over the course's own recommended Python (Flask/
+Tkinter/Pygame) and over Unity/C#. Python's libraries abstract away exactly the GPU concepts (buffers,
+pipelines, explicit synchronization) this project exists to learn; Unity would have hidden the RHI layer
+entirely inside its own engine. Client hardware/ability mattered here too: Michelle Chapman, the client,
+has limited recent PC experience and no ray-tracing-capable GPU of her own to assume — which is precisely
+why ray tracing was designed as an optional, runtime-detected capability (`02-Research.md` §2.3) rather
+than a hard requirement, so the same build runs (without ray tracing) on far less capable hardware than the
+development machine.
+
+**Testing technology.** xUnit (`tests/Engine.Tests`) was chosen over NUnit/MSTest mainly for tooling
+familiarity and first-class `dotnet test` integration; functionally the three are close to interchangeable
+for this project's needs. Manual scripted testing (`08-Testing.md` §8.3, §8.7) was chosen over automated
+UI testing for the rendering/input paths because there is no mature, low-effort way to assert "the scene
+looks correct" without a human looking at it.
+
+**Data security.** Covered in full in `11-Design.md` §11.3: passwords are never stored in plaintext
+(salted PBKDF2-HMAC-SHA256, 600,000 iterations); there is no network layer, so there is no transmission
+channel to secure in the first place.
+
+**Ethical considerations.** KSE collects no data beyond a local username/salt/hash the user creates
+themselves, and sends nothing anywhere. It replaces no one's job and has no direct environmental angle
+beyond ordinary GPU power draw, marginally higher on the Ray Tracing tier. The one genuine ethical finding
+came from client testing itself (`07-Client.md` §7.5): an engine whose only onboarding is a static README
+control table is quietly exclusionary to less tech-experienced users, which is worth weighing against
+"add more features" in any future work on this project.

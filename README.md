@@ -41,7 +41,18 @@ of the entire codebase, a development log tied to real commit history, and a tim
 6. [`06-Report.md`](Documents/06-Report.md) — project evaluation, plus a flowchart/pseudocode deep dive
    into `Program.cs`, the hardest script in the codebase to follow
 7. [`07-Client.md`](Documents/07-Client.md) — the external client tester and the brief they were given
-8. [`08-Testing.md`](Documents/08-Testing.md) — functional test cases and performance results
+8. [`08-Testing.md`](Documents/08-Testing.md) — functional test cases, performance results, and the UAT
+   script for the client
+9. [`09-Project-Plan.md`](Documents/09-Project-Plan.md) — development-approach justification, Gantt chart,
+   and weekly % complete updates
+10. [`10-Requirements.md`](Documents/10-Requirements.md) — functional/non-functional requirements and
+    acceptance criteria
+11. [`11-Design.md`](Documents/11-Design.md) — a UML class diagram of the RHI abstraction, and an IPO
+    chart covering data security
+12. [`12-Outcome-Mapping.md`](Documents/12-Outcome-Mapping.md) — maps HSC Software Engineering outcomes to
+    the specific evidence for each
+
+Automated unit tests live in [`tests/Engine.Tests/`](tests/Engine.Tests/) (run with `dotnet test`).
 
 ## Running it
 

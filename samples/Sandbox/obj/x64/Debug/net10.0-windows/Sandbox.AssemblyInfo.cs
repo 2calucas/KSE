@@ -13,10 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("run_test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+857e88b9018dba23e4425876be6eede975a7bfdb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+657b2019142220bd8f35e255804a8543ec2a2f28")]
 [assembly: System.Reflection.AssemblyProductAttribute("run_test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("run_test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Engine.Tests")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 
