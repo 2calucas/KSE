@@ -38,6 +38,8 @@ of the entire codebase, a development log tied to real commit history, and a tim
 3. [`03-Implementation.md`](Documents/03-Implementation.md)
 4. [`04-Development-Log.md`](Documents/04-Development-Log.md)
 5. [`05-Timesheet.md`](Documents/05-Timesheet.md) (+ [`Timesheet.csv`](Documents/Timesheet.csv))
+6. [`06-Report.md`](Documents/06-Report.md) — project evaluation, plus a flowchart/pseudocode deep dive
+   into `Program.cs`, the hardest script in the codebase to follow
 
 ## Running it
 
@@ -50,6 +52,52 @@ as the `run_test.exe` development build below, just published as a single win-x6
 ```
 dotnet publish samples/Sandbox/Sandbox.csproj -c Release -p:Platform=x64 -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
 ```
+
+## How to use it
+
+### 1. Log in or create an account
+
+`run_me.exe` (or `run_test.exe`) opens on a login/sign-up screen — nothing else loads until you get past
+it:
+
+- **Tab** — switch between the username and password fields
+- Type normally to enter text; **Backspace** to correct
+- **F2** — toggle between "Login" and "Create Account" mode
+- **Enter** — submit the form
+- The password field is masked with `•`, and validation/login errors are shown inline. Passwords are never
+  stored in plaintext — see the note in [What's included](#whats-included) above.
+
+Accounts are local to your machine (`%LOCALAPPDATA%\KSE\accounts.json`); there's no server, so an account
+created on one machine won't carry over to another.
+
+### 2. Move around the scene
+
+Once you're logged in, the 3D scene loads with a free-fly camera:
+
+| Input | Action |
+|---|---|
+| **W A S D** | Move forward / left / back / right |
+| Hold **Right Mouse Button** | Mouse-look (moves the camera view while held) |
+| **Space** / **Ctrl** | Move up / down |
+| **Shift** | Sprint |
+| **Up** / **Down** arrow | Cycle the quality tier: Low → Medium → High → Ray Tracing (if the GPU/driver support it) |
+| **Esc** | Log out — tears down the scene and returns to the login screen without closing the app |
+| Close the window | Exit the application entirely |
+
+The starting area has a spinning cube, a ground plane, and two spheres (one a fixed mirror, one that
+oscillates between mirror and matte). Fly out to roughly **x = 25** to find an enclosed indoor room with a
+moving point light and more reflective surfaces — a good place to compare Low/Medium/High against Ray
+Tracing, since it has more indirect light and reflections for ray tracing to pick up.
+
+### 3. Read the on-screen overlays
+
+Three overlays are drawn on top of the scene:
+
+- **Quality-tier picker** (corner-anchored) — shows the currently selected tier and which ones are
+  available on your GPU.
+- **Performance HUD** — FPS, frame time, 1%/10% low frame rates, GPU usage, and VRAM use.
+- **Input HUD** — a live readout of which movement keys are held, current mouse delta, and camera
+  position/yaw/pitch — mainly useful for debugging input issues.
 
 ## Building from source
 
