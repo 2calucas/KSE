@@ -1,0 +1,12 @@
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\bin\x64\Release\net10.0\Engine.Windowing.deps.json
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\bin\x64\Release\net10.0\Engine.Windowing.dll
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\bin\x64\Release\net10.0\Engine.Windowing.pdb
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\obj\x64\Release\net10.0\Engine.Windowing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\obj\x64\Release\net10.0\Engine.Windowing.AssemblyInfoInputs.cache
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\obj\x64\Release\net10.0\Engine.Windowing.AssemblyInfo.cs
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\obj\x64\Release\net10.0\Engine.Windowing.csproj.CoreCompileInputs.cache
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\obj\x64\Release\net10.0\Engine.Windowing.sourcelink.json
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\obj\x64\Release\net10.0\Engine.Windowing.dll
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\obj\x64\Release\net10.0\refint\Engine.Windowing.dll
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\obj\x64\Release\net10.0\Engine.Windowing.pdb
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.Windowing\obj\x64\Release\net10.0\ref\Engine.Windowing.dll

@@ -40,6 +40,8 @@ of the entire codebase, a development log tied to real commit history, and a tim
 5. [`05-Timesheet.md`](Documents/05-Timesheet.md) (+ [`Timesheet.csv`](Documents/Timesheet.csv))
 6. [`06-Report.md`](Documents/06-Report.md) — project evaluation, plus a flowchart/pseudocode deep dive
    into `Program.cs`, the hardest script in the codebase to follow
+7. [`07-Client.md`](Documents/07-Client.md) — the external client tester and the brief they were given
+8. [`08-Testing.md`](Documents/08-Testing.md) — functional test cases and performance results
 
 ## Running it
 

@@ -1,0 +1,16 @@
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\bin\x64\Release\net10.0\Engine.RHI.Vulkan.deps.json
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\bin\x64\Release\net10.0\Engine.RHI.Vulkan.dll
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\bin\x64\Release\net10.0\Engine.RHI.Vulkan.pdb
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\bin\x64\Release\net10.0\Engine.RHI.dll
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\bin\x64\Release\net10.0\Engine.RHI.pdb
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\Engine.RHI.Vulkan.csproj.AssemblyReference.cache
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\Engine.RHI.Vulkan.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\Engine.RHI.Vulkan.AssemblyInfoInputs.cache
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\Engine.RHI.Vulkan.AssemblyInfo.cs
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\Engine.RHI.Vulkan.csproj.CoreCompileInputs.cache
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\Engine.RHI.Vulkan.sourcelink.json
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\Engine.R.F6E66B7A.Up2Date
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\Engine.RHI.Vulkan.dll
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\refint\Engine.RHI.Vulkan.dll
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\Engine.RHI.Vulkan.pdb
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Vulkan\obj\x64\Release\net10.0\ref\Engine.RHI.Vulkan.dll

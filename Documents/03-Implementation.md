@@ -178,3 +178,6 @@ Depends on `Vortice.Direct3D12` 3.8.2, `Vortice.DXGI` 3.8.3, `Vortice.Dxc` 3.8.3
 | `03-Implementation.md` | This document. |
 | `04-Development-Log.md` | A weekly log built from real commit history (see next section), organized into development phases rather than a flat week-by-week list. |
 | `05-Timesheet.md` / `Timesheet.csv` | Logged/estimated hours, 19/03/2026 through 29/07/2026. |
+| `06-Report.md` | Evaluation against `01-Statement-of-Intent.md` §1.5, plus a flowchart/pseudocode deep dive into `Program.cs`. |
+| `07-Client.md` | The external client tester and the brief they were given before testing the finished build. |
+| `08-Testing.md` | Functional test cases and performance results (frame time/1% lows) for the finished build. |

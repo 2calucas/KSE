@@ -116,13 +116,90 @@ never in plaintext, and never transmitted anywhere, since the application has no
 | `.yml` | GitHub Actions CI workflow definitions |
 | `.json` | Local account storage (`accounts.json`, introduced this update); VS Code task configuration |
 
-## 2.9 Bibliography
+## 2.9 Sources and Tutorials Referenced
 
-- Khronos Group — Vulkan 1.3 Specification and `VK_KHR_ray_query` / `VK_KHR_acceleration_structure`
-  extension documentation.
-- Microsoft Learn — Direct3D 12 Programming Guide; DirectX Raytracing (DXR) Specification.
-- Microsoft Learn — `System.Security.Cryptography.Rfc2898DeriveBytes` documentation.
-- OWASP Foundation — Password Storage Cheat Sheet.
-- NIST Special Publication 800-132 — Recommendation for Password-Based Key Derivation.
-- Diligent Engine, bgfx, The Forge, Godot Engine, Hazel Engine — public source repositories, referenced
-  for RHI/rendering-abstraction design precedent (see §2.1).
+The lists below are organized by the technology they informed, rather than kept as one flat bibliography,
+since that maps more directly onto which part of KSE each source actually shaped. **Honesty note, in the
+same spirit as the estimation labelling in `05-Timesheet.md`:** this is reconstructed from the concrete
+APIs, packages, and techniques that actually ended up in the codebase (SPIR-V/DXIL, `Vortice.*`, PBKDF2,
+raw Win32 P/Invoke, etc.) and points to the canonical documentation/tutorial for each — it is not a
+browser-history log of every page visited during development. Add or replace any specific tutorial,
+video, or article you remember using that isn't listed here.
+
+### 2.9.1 Vulkan
+
+- Khronos Group — [Vulkan Registry and Specification](https://registry.khronos.org/vulkan/) — the
+  authoritative reference for every Vulkan struct/function used across `Engine.RHI.Vulkan`.
+- Khronos Group — [`VK_KHR_ray_query`](https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_ray_query.html)
+  and [`VK_KHR_acceleration_structure`](https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_acceleration_structure.html)
+  extension pages — the two extensions `VulkanGraphicsDevice` probes for and that `VulkanAccelerationStructure.cs`/
+  `Shaders.FragmentRT` build on.
+- [vulkan-tutorial.com](https://vulkan-tutorial.com/) — the standard starting-point walkthrough for
+  instance/device/swap-chain/pipeline setup, the same sequence `VulkanGraphicsDevice.cs` and
+  `VulkanSwapChain.cs` follow.
+- [vkguide.dev](https://vkguide.dev/) — a more modern (dynamic-rendering-first) Vulkan guide, closer to
+  what KSE actually uses (`vkCmdBeginRendering`/`EndRendering` rather than legacy render-pass objects).
+
+### 2.9.2 Direct3D 12 and DXR
+
+- Microsoft Learn — [Direct3D 12 Programming Guide](https://learn.microsoft.com/en-us/windows/win32/direct3d12/directx-12-programming-guide) —
+  the reference for the command-list/descriptor-heap/root-signature model `Engine.RHI.Direct3D12` is built
+  against (see the Known Issues in `03-Implementation.md` §3.2 for its current build status).
+- Microsoft — [DirectX-Specs: Raytracing (DXR)](https://microsoft.github.io/DirectX-Specs/d3d/Raytracing.html) —
+  the spec the unfinished `D3D12AccelerationStructure` path would need to implement.
+- [DirectXShaderCompiler (DXC) repository](https://github.com/microsoft/DirectXShaderCompiler) — the
+  compiler `Vortice.Dxc` wraps; used at runtime by `Program.CompileShader` to produce both DXIL and SPIR-V
+  from the same HLSL source.
+
+### 2.9.3 Windowing and the Win32 API
+
+- Microsoft Learn — [Windows API index](https://learn.microsoft.com/en-us/windows/win32/api/) — reference
+  for the `user32.dll`/`kernel32.dll` functions `Win32Window.cs` P/Invokes directly (window class
+  registration, `WndProc`, message pumping).
+- [pinvoke.net](https://www.pinvoke.net/) — community reference for Win32 P/Invoke signatures, useful when
+  translating a native declaration into the C# `LibraryImport` form KSE uses.
+- Microsoft Learn — [Source-generated P/Invoke (`LibraryImport`)](https://learn.microsoft.com/en-us/dotnet/standard/native-interop/pinvoke-source-generation) —
+  why `Engine.Windowing` can P/Invoke `user32`/`kernel32` with no `DllImport` marshalling boilerplate.
+- [GLFW](https://www.glfw.org/) — evaluated and then dropped in favour of raw Win32 (§2.5); its docs were
+  the basis for comparison, not something the final `Engine.Windowing` code depends on.
+
+### 2.9.4 Third-Party Bindings and Libraries
+
+- [Vortice.Windows](https://github.com/amerkoleci/Vortice.Windows) — the repository behind
+  `Vortice.Vulkan`, `Vortice.Direct3D12`, `Vortice.DXGI`, and `Vortice.Dxc` (§2.6); its own samples were the
+  main reference for correct usage of the .NET bindings themselves, as distinct from the native APIs above.
+- [VulkanMemoryAllocator (AMD GPUOpen)](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator) —
+  the allocator `VulkanBuffer.cs`/`VulkanTexture.cs` use via `Vortice.VulkanMemoryAllocator`, instead of
+  hand-rolled sub-allocation.
+- [SPIRV-Reflect (Khronos)](https://github.com/KhronosGroup/SPIRV-Reflect) — what `VulkanShaderModule.cs`
+  uses (via `Vortice.SPIRV.Reflect`) to recover named resource bindings from compiled SPIR-V.
+
+### 2.9.5 Cryptography and Secure Password Storage
+
+- OWASP Foundation — [Password Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) —
+  the source for rejecting plaintext/reversible storage outright and for the PBKDF2 iteration-count
+  guidance `PasswordHasher.cs` follows (§2.7).
+- NIST — [Special Publication 800-132](https://csrc.nist.gov/publications/detail/sp/800-132/final),
+  Recommendation for Password-Based Key Derivation — the standard behind choosing PBKDF2-HMAC-SHA256.
+- Microsoft Learn — [`Rfc2898DeriveBytes`](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.rfc2898derivebytes) —
+  the exact .NET API `PasswordHasher.cs` calls (`Rfc2898DeriveBytes.Pbkdf2`), avoiding any third-party
+  cryptography dependency.
+
+### 2.9.6 C# and .NET
+
+- Microsoft Learn — [.NET documentation](https://learn.microsoft.com/en-us/dotnet/) and
+  [C# language reference](https://learn.microsoft.com/en-us/dotnet/csharp/) — general reference for the
+  modern C# features used throughout (`readonly record struct`, collection expressions, `Span<byte>`).
+- Microsoft Learn — [`System.Text.Json` source generation](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/source-generation) —
+  the pattern `AccountStore.cs`/`AccountRecordJsonContext` use to (de)serialize `accounts.json` in a
+  trimming/AOT-friendly way, relevant since `run_me.exe` is published as a self-contained single file.
+
+### 2.9.7 Comparable Engines (Source Repositories)
+
+Referenced for RHI/rendering-abstraction design precedent (§2.1):
+
+- [Diligent Engine](https://github.com/DiligentGraphics/DiligentEngine)
+- [bgfx](https://github.com/bkaradzic/bgfx)
+- [The Forge](https://github.com/ConfettiFX/The-Forge)
+- [Godot Engine](https://github.com/godotengine/godot) (`RenderingDevice`)
+- [Hazel Engine (The Cherno)](https://github.com/TheCherno/Hazel)

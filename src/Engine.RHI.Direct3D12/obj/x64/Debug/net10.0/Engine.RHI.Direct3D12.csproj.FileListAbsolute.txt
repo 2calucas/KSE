@@ -1,0 +1,6 @@
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Direct3D12\obj\x64\Debug\net10.0\Engine.RHI.Direct3D12.csproj.AssemblyReference.cache
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Direct3D12\obj\x64\Debug\net10.0\Engine.RHI.Direct3D12.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Direct3D12\obj\x64\Debug\net10.0\Engine.RHI.Direct3D12.AssemblyInfoInputs.cache
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Direct3D12\obj\x64\Debug\net10.0\Engine.RHI.Direct3D12.AssemblyInfo.cs
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Direct3D12\obj\x64\Debug\net10.0\Engine.RHI.Direct3D12.csproj.CoreCompileInputs.cache
+C:\Users\king1\OneDrive\Documents\GitHub\KSE\src\Engine.RHI.Direct3D12\obj\x64\Debug\net10.0\Engine.RHI.Direct3D12.sourcelink.json

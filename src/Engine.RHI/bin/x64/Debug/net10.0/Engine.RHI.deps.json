@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Engine.RHI/1.0.0": {
+        "runtime": {
+          "Engine.RHI.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Engine.RHI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

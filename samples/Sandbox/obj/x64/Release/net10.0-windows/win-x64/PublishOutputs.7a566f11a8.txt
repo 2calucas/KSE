@@ -1,0 +1,5 @@
+C:\Users\king1\AppData\Local\Temp\kse_publish\run_test.pdb
+C:\Users\king1\AppData\Local\Temp\kse_publish\Engine.RHI.pdb
+C:\Users\king1\AppData\Local\Temp\kse_publish\Engine.RHI.Vulkan.pdb
+C:\Users\king1\AppData\Local\Temp\kse_publish\Engine.Windowing.pdb
+C:\Users\king1\AppData\Local\Temp\kse_publish\run_test.exe

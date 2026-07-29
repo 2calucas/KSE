@@ -37,6 +37,9 @@ The document set consists of:
 | `03-Implementation.md` | Architecture overview and a file-by-file explanation of every source file |
 | `04-Development-Log.md` | A weekly log of development activity, tied to real commit history |
 | `05-Timesheet.md` (+ `Timesheet.csv`) | Logged/estimated hours across the project timeline |
+| `06-Report.md` | Evaluation against the goals in §1.5, plus a flowchart/pseudocode deep dive into the hardest script to follow |
+| `07-Client.md` | The external client tester who reviewed the finished build, and the brief they were given |
+| `08-Testing.md` | Functional and performance testing carried out on the finished build |
 
 ## 1.3 Project Overview
 

@@ -1,0 +1,363 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Sandbox/1.0.0": {
+        "dependencies": {
+          "Engine.RHI": "1.0.0",
+          "Engine.RHI.Vulkan": "1.0.0",
+          "Engine.Windowing": "1.0.0",
+          "System.Drawing.Common": "10.0.10"
+        },
+        "runtime": {
+          "Sandbox.dll": {}
+        }
+      },
+      "Microsoft.Win32.SystemEvents/10.0.10": {
+        "runtime": {
+          "lib/net10.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1026.32716"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net10.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1026.32716"
+          }
+        }
+      },
+      "SharpGen.Runtime/2.4.2-beta": {
+        "runtime": {
+          "lib/net9.0/SharpGen.Runtime.dll": {
+            "assemblyVersion": "2.4.2.0",
+            "fileVersion": "2.4.2.0"
+          }
+        }
+      },
+      "SharpGen.Runtime.COM/2.4.2-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta"
+        },
+        "runtime": {
+          "lib/net9.0/SharpGen.Runtime.COM.dll": {
+            "assemblyVersion": "2.4.2.0",
+            "fileVersion": "2.4.2.0"
+          }
+        }
+      },
+      "System.Drawing.Common/10.0.10": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "10.0.10"
+        },
+        "runtime": {
+          "lib/net10.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1026.32716"
+          },
+          "lib/net10.0/System.Private.Windows.Core.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1026.32716"
+          },
+          "lib/net10.0/System.Private.Windows.GdiPlus.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1026.32716"
+          }
+        }
+      },
+      "Vortice.Dxc/3.8.3": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "SharpGen.Runtime.COM": "2.4.2-beta",
+          "Vortice.Dxc.Native": "1.0.5"
+        },
+        "runtime": {
+          "lib/net10.0/Vortice.Dxc.dll": {
+            "assemblyVersion": "3.8.3.0",
+            "fileVersion": "3.8.3.0"
+          }
+        }
+      },
+      "Vortice.Dxc.Native/1.0.5": {
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libdxcompiler.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libdxil.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/dxcompiler.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "1.9.2602.17"
+          },
+          "runtimes/win-arm64/native/dxil.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "1.9.2602.17"
+          },
+          "runtimes/win-x64/native/dxcompiler.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.9.2602.17"
+          },
+          "runtimes/win-x64/native/dxil.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.9.2602.17"
+          }
+        }
+      },
+      "Vortice.SPIRV/1.0.5": {
+        "runtime": {
+          "lib/net10.0/Vortice.SPIRV.dll": {
+            "assemblyVersion": "1.0.5.0",
+            "fileVersion": "1.0.5.0"
+          }
+        }
+      },
+      "Vortice.SPIRV.Reflect/1.0.6": {
+        "dependencies": {
+          "Vortice.SPIRV": "1.0.5"
+        },
+        "runtime": {
+          "lib/net10.0/Vortice.SPIRV.Reflect.dll": {
+            "assemblyVersion": "1.0.6.0",
+            "fileVersion": "1.0.6.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm/native/libspirv-reflect.so": {
+            "rid": "android-arm",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/android-arm64/native/libspirv-reflect.so": {
+            "rid": "android-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/android-x64/native/libspirv-reflect.so": {
+            "rid": "android-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libspirv-reflect.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libspirv-reflect.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/spirv-reflect.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/spirv-reflect.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Vortice.Vulkan/3.2.3": {
+        "runtime": {
+          "lib/net10.0/Vortice.Vulkan.dll": {
+            "assemblyVersion": "3.2.3.0",
+            "fileVersion": "3.2.3.0"
+          }
+        }
+      },
+      "Vortice.VulkanMemoryAllocator/1.7.0": {
+        "dependencies": {
+          "Vortice.Vulkan": "3.2.3"
+        },
+        "runtime": {
+          "lib/net10.0/Vortice.VulkanMemoryAllocator.dll": {
+            "assemblyVersion": "1.7.0.0",
+            "fileVersion": "1.7.0.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm/native/libvma.so": {
+            "rid": "android-arm",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/android-arm64/native/libvma.so": {
+            "rid": "android-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/android-x64/native/libvma.so": {
+            "rid": "android-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-arm64/native/libvma.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libvma.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libvma.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/vma.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/vma.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Engine.RHI/1.0.0": {
+        "runtime": {
+          "Engine.RHI.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Engine.RHI.Vulkan/1.0.0": {
+        "dependencies": {
+          "Engine.RHI": "1.0.0",
+          "Vortice.Dxc": "3.8.3",
+          "Vortice.SPIRV.Reflect": "1.0.6",
+          "Vortice.Vulkan": "3.2.3",
+          "Vortice.VulkanMemoryAllocator": "1.7.0"
+        },
+        "runtime": {
+          "Engine.RHI.Vulkan.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Engine.Windowing/1.0.0": {
+        "runtime": {
+          "Engine.Windowing.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Sandbox/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Win32.SystemEvents/10.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IY0lTfC2uVwTizjtGgQ03ViwyXGQ9lMDblzB889/HyguAZJ2J8pRrjPown8h2eJe8WFc8nh+BUEsEPkshzizYQ==",
+      "path": "microsoft.win32.systemevents/10.0.10",
+      "hashPath": "microsoft.win32.systemevents.10.0.10.nupkg.sha512"
+    },
+    "SharpGen.Runtime/2.4.2-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-niTtWAUov1F7wZGAlVeEvW+Tnqvg5yTmhI7rxmYu2Utoyu2TbC9tWWpUpMs0PQg5lu5svoYpCAztNjxCqMFP/w==",
+      "path": "sharpgen.runtime/2.4.2-beta",
+      "hashPath": "sharpgen.runtime.2.4.2-beta.nupkg.sha512"
+    },
+    "SharpGen.Runtime.COM/2.4.2-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9lxDFMiepqo3lJQzMSjECCIONeCc2f3Drokgj6HtrTLZcJSftNgcLbD6/iXYj2iphkwgrZb1oLsDOZxoFZkawQ==",
+      "path": "sharpgen.runtime.com/2.4.2-beta",
+      "hashPath": "sharpgen.runtime.com.2.4.2-beta.nupkg.sha512"
+    },
+    "System.Drawing.Common/10.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R9q9TI//kGavXWTxvaSS9ERj79s+Vm7V7769zEmRbzdrIOJzAnGw+wWSo/JkaVdQfAAefV2V1bWYKCHF7Zs5oQ==",
+      "path": "system.drawing.common/10.0.10",
+      "hashPath": "system.drawing.common.10.0.10.nupkg.sha512"
+    },
+    "Vortice.Dxc/3.8.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DkiIQe2qWzWOxalxgLgKTkm5Yqk9fg2ucylxnKXnicf31IKRnxuWvVSwVXz9vq8d+C+KviDCaYnZMzCEB6Hgzw==",
+      "path": "vortice.dxc/3.8.3",
+      "hashPath": "vortice.dxc.3.8.3.nupkg.sha512"
+    },
+    "Vortice.Dxc.Native/1.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-10HX74WI4glwJNLolxN0CPo8snGwtoo5jElWs2ytBAPLsfL/CnK9t+kyiED7AhTp4OsE5pINzDXoAxBvREUKPw==",
+      "path": "vortice.dxc.native/1.0.5",
+      "hashPath": "vortice.dxc.native.1.0.5.nupkg.sha512"
+    },
+    "Vortice.SPIRV/1.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+/d13hilxamYgHFrYr59hDf7Mh71JPNtgGaUjxpFuvGMJNG2+GqNZRkcOE9qO/1F6qG0FMrXdQkybW6xr5quWg==",
+      "path": "vortice.spirv/1.0.5",
+      "hashPath": "vortice.spirv.1.0.5.nupkg.sha512"
+    },
+    "Vortice.SPIRV.Reflect/1.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2RQUmpWk/cwKM4IVLFr5Mefseb6oUa4VnJmW/trp1lC+jSU8X0jmvrUvl8JpJw6ukyVjrar3WzWBWNS3/J75JA==",
+      "path": "vortice.spirv.reflect/1.0.6",
+      "hashPath": "vortice.spirv.reflect.1.0.6.nupkg.sha512"
+    },
+    "Vortice.Vulkan/3.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-06dbWvLIY75EKpWV2C/bQ1ubZ0gPDhzseQd29Lu26p/laHhRDqOLeqW/WtUZG9gyLx82XmVKDBMV6ktCvLIctA==",
+      "path": "vortice.vulkan/3.2.3",
+      "hashPath": "vortice.vulkan.3.2.3.nupkg.sha512"
+    },
+    "Vortice.VulkanMemoryAllocator/1.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oLtKAzt56SZFdy27KqhcFji8253+zgmfmm6WX6x7PCbbtwOUzE3VvfFgDGNnVuwVvGH+PXyzQQa2yQWRq3yFkQ==",
+      "path": "vortice.vulkanmemoryallocator/1.7.0",
+      "hashPath": "vortice.vulkanmemoryallocator.1.7.0.nupkg.sha512"
+    },
+    "Engine.RHI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Engine.RHI.Vulkan/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Engine.Windowing/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

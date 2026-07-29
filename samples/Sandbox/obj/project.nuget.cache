@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "f32ST7IPkXE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\king1\\OneDrive\\Documents\\GitHub\\KSE\\samples\\Sandbox\\Sandbox.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\king1\\.nuget\\packages\\microsoft.win32.systemevents\\10.0.10\\microsoft.win32.systemevents.10.0.10.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\sharpgen.runtime\\2.4.2-beta\\sharpgen.runtime.2.4.2-beta.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\sharpgen.runtime.com\\2.4.2-beta\\sharpgen.runtime.com.2.4.2-beta.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\system.configuration.configurationmanager\\10.0.10\\system.configuration.configurationmanager.10.0.10.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.10\\system.diagnostics.eventlog.10.0.10.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\system.diagnostics.performancecounter\\10.0.10\\system.diagnostics.performancecounter.10.0.10.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\system.drawing.common\\10.0.10\\system.drawing.common.10.0.10.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\system.security.cryptography.protecteddata\\10.0.10\\system.security.cryptography.protecteddata.10.0.10.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\vortice.dxc\\3.8.3\\vortice.dxc.3.8.3.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\vortice.dxc.native\\1.0.5\\vortice.dxc.native.1.0.5.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\vortice.spirv\\1.0.5\\vortice.spirv.1.0.5.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\vortice.spirv.reflect\\1.0.6\\vortice.spirv.reflect.1.0.6.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\vortice.vulkan\\3.2.3\\vortice.vulkan.3.2.3.nupkg.sha512",
+    "C:\\Users\\king1\\.nuget\\packages\\vortice.vulkanmemoryallocator\\1.7.0\\vortice.vulkanmemoryallocator.1.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
