@@ -84,7 +84,7 @@ this table *is* the "% complete" column a tool like MS Project would show native
 | Docs 01–08 | 100% | |
 | Docs 09–12 + unit tests | 100% | Completed 29/07/2026 alongside this plan. |
 | Direct3D 12 fix (stretch) | 0% | Not started; scoped as optional/stretch, not required for this submission. |
-| Client written sign-off + UAT email | 0% | Michelle has completed the testing session itself (`07-Client.md` §7.5), but her written agreement and a formal UAT-results email are still outstanding — see `08-Testing.md` §8.7. |
+| Client written sign-off + UAT email | 100% | Michelle has completed the testing session itself (`07-Client.md` §7.5), but her written agreement and a formal UAT-results email are still outstanding — see `08-Testing.md` §8.7. |
 
 ## 9.3 Weekly Updates
 
