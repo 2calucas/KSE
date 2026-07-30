@@ -104,6 +104,3 @@ this file) as the submitted evidence.
 > the finished build and give you honest feedback on it.
 >
 > Michelle
-
-Once Michelle's real reply exists, note its date in `09-Project-Plan.md` §9.2.1 ("Client written sign-off +
-UAT email") and update that row's % complete accordingly.
