@@ -6,6 +6,11 @@ windowing layer, and a sample application (`run_test.exe`) that puts it all toge
 3D scene with shadow mapping, selectable quality tiers, and, when the GPU supports it, ray-traced shadows,
 reflections, and global illumination.
 
+## Main file
+
+Use this to find the main file for `run_me.exe` for further discovery of the application.
+`KSE`/`samples`/`Sandbox`/`Program.cs`
+
 ## What's included
 
 - **`Engine.RHI`** — interfaces for GPU buffers, textures, pipelines, resource sets, command
