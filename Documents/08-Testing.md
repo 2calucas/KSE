@@ -125,33 +125,16 @@ mark each step as she did it, guidance included, not to redo the whole session u
 
 | Step | Instruction | Expected result | Client result (to be completed by Michelle) | Pass/Fail |
 |---|---|---|---|---|
-| UAT1 | Launch `run_me.exe`. Create an account using a username and password you'll remember. | The 3D scene appears after submitting. | | |
-| UAT2 | Close the app, reopen it, and log back in with the same details. | You're back in the same scene. | | |
-| UAT3 | Try logging in with the wrong password on purpose. | A message tells you the login failed, without saying which part was wrong. | | |
-| UAT4 | Move around the scene using the controls in `README.md` → *How to use it*, with help if you need it. | You can move the camera and look around. | | |
-| UAT5 | Press the Up/Down arrow keys a few times. | The picture in the corner of the screen changes between quality levels, and the scene may look sharper or blurrier. | | |
-| UAT6 | Try to find the indoor room (there's an on-screen hint about which direction to fly). | You find a room with different lighting from the outdoor scene. | | |
-| UAT7 | Press Esc. | You're returned to the login screen, and the app is still running (not closed). | | |
-| UAT8 | Overall — was anything confusing, broken, or worth mentioning? | (open-ended) | | N/A |
+| UAT1 | Launch `run_me.exe`. Create an account using a username and password you'll remember. | The 3D scene appears after submitting. | Opening the application was easy as it was `run_me.exe`, the client had no initial issues opening it. Although making the account need more reading of the options on the page Michelle made an account and was able to log in without issues. | Pass |
+| UAT2 | Close the app, reopen it, and log back in with the same details. | You're back in the same scene. | She was able to close the application and logout and log back into the application with more speed the before as she got the hang of the applications logging in system. | Pass |
+| UAT3 | Try logging in with the wrong password on purpose. | A message tells you the login failed, without saying which part was wrong. | There were no issues with the fail login in notice on the login page of the application. | Pass |
+| UAT4 | Move around the scene using the controls in `README.md` → *How to use it*, with help if you need it. | You can move the camera and look around. | She had initial difficulty with this system, as it has been a long time since she has used a PC with a mouse, although she was able to handle it at her own pace, further improvement of accessibility might be considered.  | Pass |
+| UAT5 | Press the Up/Down arrow keys a few times. | The picture in the corner of the screen changes between quality levels, and the scene may look sharper or blurrier. | She was easily able to handle changing the graphics quality with the arrows as it was simplified just for everyone to look at the rendering quality and no need for movement. | Pass |
+| UAT6 | Try to find the indoor room (there's an on-screen hint about which direction to fly). | You find a room with different lighting from the outdoor scene. | She had difficulty moving the mouse slightly too much and loosing line of sight of the entire testing environment, but was able to move to the indoor test area within the application. | Pass |
+| UAT7 | Press Esc. | You're returned to the login screen, and the app is still running (not closed). | Pressing the `esc` was trivial for her and was able to do it with ease. | Pass |
+| UAT8 | Overall — was anything confusing, broken, or worth mentioning? | (open-ended) | The application was a great success with the client, and is a great project to research on. | Pass |
 
-### 8.7.2 Client UAT Results Email (Template)
 
-As with §7.6, this is a **template** for Michelle to send once she has completed §8.7.1 with her own
-results filled in — it is left as a template rather than a fabricated reply, so that the actual submitted
-evidence is a real email from her:
-
-> **Subject:** UAT results — KSE testing
->
-> Hi Cal,
->
-> Here are my results from going through the test script:
->
-> [Michelle pastes/describes her completed copy of the table in §8.7.1 here, including anything under UAT8.]
->
-> Michelle
-
-Once received, log the date in `09-Project-Plan.md` §9.2.1 next to "Client written sign-off + UAT email"
-and update that row's % complete from 0%.
 
 ## 8.8 Conclusion
 
